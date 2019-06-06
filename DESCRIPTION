@@ -1,10 +1,10 @@
 Package: firstclass
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Creates a First Class Package
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
+Author: Desiree De Leon
+Maintainer: Desiree De Leon <desiree@rstudio.com>
+Description: This package is just to practice making a package that bundles materials.
     Use four spaces when indenting paragraphs within the Description.
 License: What license is it under?
 Encoding: UTF-8
