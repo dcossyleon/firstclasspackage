@@ -6,7 +6,9 @@ Authors@R:
            family = "De Leon",
            role = c("aut", "cre"),
            email = "desiree@rstudio.com")
-Description: What the package does (one paragraph).
+Description: This package is for me to learn how to put the following in a package: a raw data file, a couple of homemade functions, a learnR tutorial .Rmd file, and a template .Rmd file
+    This demonstrates that packages are a useful way for educators to deliver their materials and teaching content to students. 
+
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
