@@ -20,7 +20,14 @@ knitr::opts_chunk$set(
 <!-- [![Codecov test coverage](https://codecov.io/gh/dcossyleon/firstclasspackage/branch/master/graph/badge.svg)](https://codecov.io/gh/dcossyleon/firstclasspackage?branch=master) -->
 <!-- <!-- badges: end --> -->
 
-The goal of firstclass is to ...
+The goal of firstclass is to practice putting the following in a package:
+
+* 1. A raw data file
+* 2. A couple of homemade functions
+* 3. A learnr tutorial .Rmd file
+* 4. A template .Rmd file
+
+This demonstrates that packages are a useful way for educators to deliver their materials and teaching content to students. 
 
 ## Installation
 
@@ -38,7 +45,7 @@ devtools::install_github("dcossyleon/firstclasspackage")
 ```
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+Here is where I will include some examples of what you can do with this package:
 
 ```{r example}
 library(firstclass)

@@ -6,7 +6,17 @@ firstclass
 <!-- <!-- badges: start -->
 --&gt; <!-- [![Travis build status](https://travis-ci.org/dcossyleon/firstclasspackage.svg?branch=master)](https://travis-ci.org/dcossyleon/firstclasspackage) --> <!-- [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/dcossyleon/firstclasspackage?branch=master&svg=true)](https://ci.appveyor.com/project/dcossyleon/firstclasspackage) --> <!-- [![Codecov test coverage](https://codecov.io/gh/dcossyleon/firstclasspackage/branch/master/graph/badge.svg)](https://codecov.io/gh/dcossyleon/firstclasspackage?branch=master) --> <!-- <!-- badges: end --> --&gt;
 
-The goal of firstclass is to ...
+The goal of firstclass is to practice putting the following in a package:
+
+-   1.  A raw data file
+
+-   1.  A couple of homemade functions
+
+-   1.  A learnr tutorial .Rmd file
+
+-   1.  A template .Rmd file
+
+This demonstrates that packages are a useful way for educators to deliver their materials and teaching content to students.
 
 Installation
 ------------
@@ -27,7 +37,7 @@ devtools::install_github("dcossyleon/firstclasspackage")
 Example
 -------
 
-This is a basic example which shows you how to solve a common problem:
+Here is where I will include some examples of what you can do with this package:
 
 ``` r
 library(firstclass)
