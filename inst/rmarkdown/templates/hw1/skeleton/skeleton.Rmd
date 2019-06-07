@@ -1,6 +1,6 @@
 ---
 title: "Template Title"
-author: "Your Name"
+author: "Desiree"
 date: "The Date"
 output: output_format
 ---
