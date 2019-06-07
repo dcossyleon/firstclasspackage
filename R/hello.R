@@ -25,5 +25,5 @@
 
 
 hello <- function() {
-  print("Hello, world!")
+  print("Welcome to your first class of learning to make packages!")
 }
