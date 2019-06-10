@@ -12,6 +12,9 @@ body {
 h1 {
   padding-top: 2em !important;
   margin-top: -1em !important;
+  font-family: 'Lato', sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 h1.title.toc-ignore {
@@ -245,11 +248,18 @@ body, html {
 
 .image-text{
     position: absolute;
-    top:30%;
+    top:15%;
     left:0;
     right:0;
     bottom:0;
   }
+
+.image-text-grey-box{
+  margin: 0 auto;
+  padding: 3em;
+  background: rgba(0,0,0,0.1);
+  width: 60%;
+}
 .lil-image-text {
     color: white;
     margin-top: 0;
@@ -259,12 +269,13 @@ body, html {
     padding-top: 0;
     text-align: center;
     display:block;
-    font-family: 'Abril Fatface', serif;
-      font-size: 22px;
+    font-family: 'Lato', sans-serif;
+      font-size: 25px;
       font-weight: 500;
       line-height: 1.5em;
       letter-spacing: 1px;
       font-weight: normal;
+      text-transform: uppercase;
       color: #fff;
   }
 
@@ -277,12 +288,14 @@ body, html {
 .big-image-text {
   letter-spacing: 0.065em;
   line-height: 1em;
-  font-size: 68px;
+  font-size: 72px;
   text-transform: uppercase;
   text-align: center;
   display:block;
   color: #fff;
   margin-bottom: 3rem;
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 0.1em;
 }
 
 
@@ -292,7 +305,7 @@ body, html {
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(0,0,0,.1);
+  background-color: rgba(0,0,0,0.1);
 }
 
 /* Landing Page*/

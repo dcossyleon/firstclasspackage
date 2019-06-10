@@ -14,15 +14,15 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-# Before you being: is this tutorial for you?
-**I assume that you already are comfortable with the following**
+# Is this tutorial for you?
+Pre-requisites:
 
 1) You have a github account
 2) You are comfortable with the basics of using R and RStudio
 3) You understand how R projects work
 4) You understand the difference between a regular R script and an R Markdown document
 
-[refine with j hester talk notes: ]
+[^ refine with j hester's descriptions from talk]
 
 **What you'll learn:**
 
