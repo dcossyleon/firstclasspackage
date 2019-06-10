@@ -15,7 +15,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 # Is this tutorial for you?
-Pre-requisites:
+**Pre-requisites:**
 
 1) You have a github account
 2) You are comfortable with the basics of using R and RStudio
@@ -26,10 +26,10 @@ Pre-requisites:
 
 **What you'll learn:**
 
-1) How to make a package that your students can install from github
-2) Include a raw data set in your package
-3) Create a custom template in your package that your learners can use for worksheets, training materials, assigment templates, etc.
-4) How to give your students access to a custom 
+1) How to make a package that your students can download and install from github
+2) How to include a raw data set in your package
+3) How to create a custom template in your package that your learners can use for worksheets, training materials, assigment templates, etc
+4) How to give your students access to a custom interactive tutorial/lesson
 
 <br>
 
@@ -40,9 +40,26 @@ Pre-requisites:
 <center>![](Box.jpg){width=600px}</center>
 
 
-### Getting started
+
+## Getting started
+
+Need to install and load the following: 
+
+```{r, eval=FALSE}
+#install.packages(c("devtools", "roxygen2", "usethis"))
+library(devtools)
+library(roxygen2)
+library(usethis)
+```
+
+### You don't have to do it by yourself 
+Making a package involves creating an R project with several specific folders containing scripts and other intermediate files. We could create these folders manually, but we don't have to! There are some helper functions that streamline this folder-creation and organization process for us to make sure these files end up in the right place. (I know because I tried not using the helper functions, and my files got all sorts of messed up.)
 
 
+<div class= "alert alert-note">
+> **A little more info:**  What are these for? `devtools` is used to _______ & ________. The `roxygen2` package is going to makes sure that your descriptions for each part of your package are formatted properly. The `usethis` package automates the creation of folders and intermediate files so that you don't have to accidentally put stuff in the wrong place.
+
+</div>
 
 Making a packages involves creating a project for the package's materials. Creating some scripts and making sure they end up in the right folders within the project. 
 
@@ -50,7 +67,7 @@ There are some helper functions that help streamline the process of making sure 
 
 <br>
 
-### You don't have to do it by yourself 
+
 The helper is the `usethis` package. The next thing you should do is install `usethis` with:
 
 ```{r, eval=FALSE}
@@ -58,9 +75,7 @@ install.packages("usethis")
 ```
  
  
- **Or** with this, which is the recommended way to get the most up-to-date version:
- 
- 
+Troubleshooting; get the most up-to-date version of your packages:
 ```{r, eval=FALSE}
 # install.packages("devtools")
 devtools::install_github("r-lib/usethis")
@@ -138,3 +153,17 @@ use_tutorial("Lesson1", "Lesson1", open = interactive())
 ```
 
 After running the code above, I got a really long wait time with something that said "Loading required package: shiny / Listening on http://127.0.0.1:5525" After getting tired of waiting, I clicked "STOP" and the tutorial loaded. Weird.
+
+
+# Troubleshooting
+If you run into rough patches, here are some common pitfalls that might be resulting in errors:
+
+* Do you have most up-to-date version of your packages? Try installing the development version of the package from github. Here's an example of what that looks like for the `usethis` package.
+```{r, eval=FALSE}
+# install.packages("devtools")
+devtools::install_github("r-lib/usethis")
+```
+
+* Are you running the most current version of R and/or RStudio?
+
+* Did you install R via homebrew? --> Uninstall and install from CRAN!

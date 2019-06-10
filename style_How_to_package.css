@@ -17,6 +17,19 @@ h1 {
   font-weight: bold;
 }
 
+h3 {
+  font-family: 'Lato', sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #575757;
+}
+
+h2 {
+  font-family: 'Lato', sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
 h1.title.toc-ignore {
   display: none;
 }
@@ -42,15 +55,15 @@ ul {
 
 .alert-note {
   color: #777777;
-  background-color: #f6f3f3;
+  background-color: #ddf5ff;
   width: 90%;
   margin: 0 auto;
 }
 
 
 blockquote {
-  margin: 0 0 0 0 !important;
-  padding: 0.5px 21px;  /* I changed from default of 10.5px 21px*/
+ border-left: 5px solid #afd8eb !important;
+ color: #246e90;
 }
 
 .blockquote-note {
@@ -257,7 +270,7 @@ body, html {
 .image-text-grey-box{
   margin: 0 auto;
   padding: 3em;
-  background: rgba(0,0,0,0.1);
+  background: rgba(0,0,0,0.05);
   width: 60%;
 }
 .lil-image-text {

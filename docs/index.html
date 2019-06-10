@@ -431,7 +431,7 @@ div.tocify {
 
 <div id="is-this-tutorial-for-you" class="section level1">
 <h1>Is this tutorial for you?</h1>
-<p>Pre-requisites:</p>
+<p><strong>Pre-requisites:</strong></p>
 <ol style="list-style-type: decimal">
 <li>You have a github account</li>
 <li>You are comfortable with the basics of using R and RStudio</li>
@@ -441,10 +441,10 @@ div.tocify {
 <p>[^ refine with j hester’s descriptions from talk]</p>
 <p><strong>What you’ll learn:</strong></p>
 <ol style="list-style-type: decimal">
-<li>How to make a package that your students can install from github</li>
-<li>Include a raw data set in your package</li>
-<li>Create a custom template in your package that your learners can use for worksheets, training materials, assigment templates, etc.</li>
-<li>How to give your students access to a custom</li>
+<li>How to make a package that your students can download and install from github</li>
+<li>How to include a raw data set in your package</li>
+<li>How to create a custom template in your package that your learners can use for worksheets, training materials, assigment templates, etc</li>
+<li>How to give your students access to a custom interactive tutorial/lesson</li>
 </ol>
 <p><br></p>
 </div>
@@ -454,20 +454,31 @@ div.tocify {
 <center>
 <img src="Box.jpg" width="600" />
 </center>
-<div id="getting-started" class="section level3">
-<h3>Getting started</h3>
+<div id="getting-started" class="section level2">
+<h2>Getting started</h2>
+<p>Need to install and load the following:</p>
+<pre class="r"><code>#install.packages(c(&quot;devtools&quot;, &quot;roxygen2&quot;, &quot;usethis&quot;))
+library(devtools)
+library(roxygen2)
+library(usethis)</code></pre>
+<div id="you-dont-have-to-do-it-by-yourself" class="section level3">
+<h3>You don’t have to do it by yourself</h3>
+<p>Making a package involves creating an R project with several specific folders containing scripts and other intermediate files. We could create these folders manually, but we don’t have to! There are some helper functions that streamline this folder-creation and organization process for us to make sure these files end up in the right place. (I know because I tried not using the helper functions, and my files got all sorts of messed up.)</p>
+<div class="alert alert-note">
+<blockquote>
+<p><strong>A little more info:</strong> What are these for? <code>devtools</code> is used to _______ &amp; ________. The <code>roxygen2</code> package is going to makes sure that your descriptions for each part of your package are formatted properly. The <code>usethis</code> package automates the creation of folders and intermediate files so that you don’t have to accidentally put stuff in the wrong place.</p>
+</blockquote>
+</div>
 <p>Making a packages involves creating a project for the package’s materials. Creating some scripts and making sure they end up in the right folders within the project.</p>
 <p>There are some helper functions that help streamline the process of making sure these files end up in the right place. (I know because I tried not using the helper functions, and my files got all sorts of messed up.)</p>
 <p><br></p>
-</div>
-<div id="you-dont-have-to-do-it-by-yourself" class="section level3">
-<h3>You don’t have to do it by yourself</h3>
 <p>The helper is the <code>usethis</code> package. The next thing you should do is install <code>usethis</code> with:</p>
 <pre class="r"><code>install.packages(&quot;usethis&quot;)</code></pre>
-<p><strong>Or</strong> with this, which is the recommended way to get the most up-to-date version:</p>
+<p>Troubleshooting; get the most up-to-date version of your packages:</p>
 <pre class="r"><code># install.packages(&quot;devtools&quot;)
 devtools::install_github(&quot;r-lib/usethis&quot;)</code></pre>
 <p><br></p>
+</div>
 </div>
 </div>
 <div id="including-data-sets" class="section level1">
@@ -514,6 +525,19 @@ remotes::install_github(&quot;your-github-name/your-repository-name&quot;)</code
 <pre class="r"><code>remotes::install_github(&quot;rstudio/learnr&quot;)
 use_tutorial(&quot;Lesson1&quot;, &quot;Lesson1&quot;, open = interactive())</code></pre>
 <p>After running the code above, I got a really long wait time with something that said “Loading required package: shiny / Listening on <a href="http://127.0.0.1:5525" class="uri">http://127.0.0.1:5525</a>” After getting tired of waiting, I clicked “STOP” and the tutorial loaded. Weird.</p>
+</div>
+<div id="troubleshooting" class="section level1">
+<h1>Troubleshooting</h1>
+<p>If you run into rough patches, here are some common pitfalls that might be resulting in errors:</p>
+<ul>
+<li>Do you have most up-to-date version of your packages? Try installing the development version of the package from github. Here’s an example of what that looks like for the <code>usethis</code> package.</li>
+</ul>
+<pre class="r"><code># install.packages(&quot;devtools&quot;)
+devtools::install_github(&quot;r-lib/usethis&quot;)</code></pre>
+<ul>
+<li><p>Are you running the most current version of R and/or RStudio?</p></li>
+<li><p>Did you install R via homebrew? –&gt; Uninstall and install from CRAN!</p></li>
+</ul>
 </div>
 
 
