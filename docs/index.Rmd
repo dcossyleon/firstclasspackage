@@ -9,8 +9,6 @@ output:
     toc_float: true
     theme: cosmo
     number_sections: false
- 
-
 ---
 
 ```{r setup, include=FALSE}

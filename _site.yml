@@ -1,0 +1,16 @@
+name: "firstclasspackage"
+output_dir: "docs"
+navbar:
+  title: "firstclasspackage"
+  left:
+  - text: "Tutorial"
+    href: index.html
+output:
+  bookdown::html_document2:
+    includes:
+    css: style.css
+    toc: true
+    toc_float: true
+    theme: cosmo
+    number_sections: false
+
