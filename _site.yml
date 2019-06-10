@@ -6,11 +6,8 @@ navbar:
   - text: "Tutorial"
     href: index.html
 output:
-  bookdown::html_document2:
+  html_document:
     includes:
-    css: style.css
-    toc: true
-    toc_float: true
-    theme: cosmo
-    number_sections: false
+    css: style_How_to_package.css
+
 
