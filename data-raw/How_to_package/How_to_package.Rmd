@@ -1,0 +1,142 @@
+---
+title: "How to build a package for your classroom"
+output: 
+  html_document:
+    includes:
+      in_header: firstclass_bigimage.html
+    css: style_How_to_package.css
+    toc: true
+    toc_float: true
+    theme: cosmo
+    number_sections: false
+ 
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# Before you being: is this tutorial for you?
+**I assume that you already are comfortable with the following**
+
+1) You have a github account
+2) You are comfortable with the basics of using R and RStudio
+3) You understand how R projects work
+4) You understand the difference between a regular R script and an R Markdown document
+
+[refine with j hester talk notes: ]
+
+**What you'll learn:**
+
+1) How to make a package that your students can install from github
+2) Include a raw data set in your package
+3) Create a custom template in your package that your learners can use for worksheets, training materials, assigment templates, etc.
+4) How to give your students access to a custom 
+
+<br>
+
+# So you wanna make a package?
+
+[Intro text that tells you what you can do with a package as an educator. Kind of repeats above points, so need to merge.]
+
+<center>![](Box.jpg){width=600px}</center>
+
+
+### Getting started
+
+
+
+Making a packages involves creating a project for the package's materials. Creating some scripts and making sure they end up in the right folders within the project. 
+
+There are some helper functions that help streamline the process of making sure these files end up in the right place. (I know because I tried not using the helper functions, and my files got all sorts of messed up.)
+
+<br>
+
+### You don't have to do it by yourself 
+The helper is the `usethis` package. The next thing you should do is install `usethis` with:
+
+```{r, eval=FALSE}
+install.packages("usethis")
+```
+ 
+ 
+ **Or** with this, which is the recommended way to get the most up-to-date version:
+ 
+ 
+```{r, eval=FALSE}
+# install.packages("devtools")
+devtools::install_github("r-lib/usethis")
+```
+
+<br>
+
+
+
+
+# Including data sets
+What if you'd like your students to work with a specific data set. Should you email them an excel or .csv file? NO! You can include data sets in your package, ready to be summoned with the call of an object name.  
+
+[graphic for how to do this]
+
+### FYI: Folders that will be generated that you'll be working with
+
+- **Data:** 
+- **Data-raw:** This folder is where you can put all of your stuff. Scripts, csv files, whatever you want. 
+- **man:** This folder will contain intermediate output. You won't need to use the files in here directly, but they need to exist.
+- **R**: This is where your usable, callable data set will end up.
+
+### Step 1
+
+```{r, eval=FALSE}
+create_package( )
+
+```
+
+
+
+### Install
+```{r, eval=FALSE}
+# install.packages("remotes")
+remotes::install_github("your-github-name/your-repository-name")
+
+```
+
+<br>
+
+```{r, eval=FALSE}
+summary(cars)
+```
+
+<br>
+
+
+
+# Including a template .Rmd file. 
+
+What is an .Rmd template and why would you want to make one?
+
+An .Rmd template is essentially the replacement for a worksheet. It is a partially-filled out .Rmd that you create. You can create a template for every hw assignment or exercise that you want your students to work through. And they can access all of these templates easily when they go to create a new .Rmd file. They just select the appropriate template. 
+
+To make one your first template, you will:
+
+1) use a usethis function `use_rmarkdown_template()` to spit out the different files and folders you need all in the write places
+2) You'll modify the template.
+3) 
+
+```{r, eval=FALSE}
+
+use_rmarkdown_template(template_name = "Template Name")
+
+```
+
+# Including learnR tutorials
+
+**Folders added
+- This will add a inst folder to your package project directory
+
+```{r, eval=FALSE}
+remotes::install_github("rstudio/learnr")
+use_tutorial("Lesson1", "Lesson1", open = interactive())
+```
+
+After running the code above, I got a really long wait time with something that said "Loading required package: shiny / Listening on http://127.0.0.1:5525" After getting tired of waiting, I clicked "STOP" and the tutorial loaded. Weird.

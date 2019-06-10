@@ -1,6 +1,6 @@
 ---
-title: "Template Title"
-author: "Desiree"
+title: "Homework 1"
+author: "Desirée De Leon"
 date: "The Date"
 output: output_format
 ---

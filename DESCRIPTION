@@ -13,5 +13,6 @@ Encoding: UTF-8
 LazyData: true
 Suggests: 
     covr,
-    testthat (>= 2.1.0)
+    testthat (>= 2.1.0),
+    learnr
 RoxygenNote: 6.1.1.9000
