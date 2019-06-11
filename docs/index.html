@@ -461,25 +461,72 @@ div.tocify {
 library(devtools)
 library(roxygen2)
 library(usethis)</code></pre>
-<div id="you-dont-have-to-do-it-by-yourself" class="section level3">
-<h3>You don’t have to do it by yourself</h3>
+<p><br></p>
+<div id="youre-not-on-your-own" class="section level3">
+<h3>You’re not on your own</h3>
 <p>Making a package involves creating an R project with several specific folders containing scripts and other intermediate files. We could create these folders manually, but we don’t have to! There are some helper functions that streamline this folder-creation and organization process for us to make sure these files end up in the right place. (I know because I tried not using the helper functions, and my files got all sorts of messed up.)</p>
 <div class="alert alert-note">
 <blockquote>
 <p><strong>A little more info:</strong> What are these for? <code>devtools</code> is used to _______ &amp; ________. The <code>roxygen2</code> package is going to makes sure that your descriptions for each part of your package are formatted properly. The <code>usethis</code> package automates the creation of folders and intermediate files so that you don’t have to accidentally put stuff in the wrong place.</p>
 </blockquote>
 </div>
-<p>Making a packages involves creating a project for the package’s materials. Creating some scripts and making sure they end up in the right folders within the project.</p>
-<p>There are some helper functions that help streamline the process of making sure these files end up in the right place. (I know because I tried not using the helper functions, and my files got all sorts of messed up.)</p>
-<p><br></p>
-<p>The helper is the <code>usethis</code> package. The next thing you should do is install <code>usethis</code> with:</p>
-<pre class="r"><code>install.packages(&quot;usethis&quot;)</code></pre>
-<p>Troubleshooting; get the most up-to-date version of your packages:</p>
-<pre class="r"><code># install.packages(&quot;devtools&quot;)
-devtools::install_github(&quot;r-lib/usethis&quot;)</code></pre>
 <p><br></p>
 </div>
+<div id="a-little-bit-more-setup" class="section level3">
+<h3>A little bit more setup</h3>
+<p>To make the <code>usethis</code> package maximally helpful to us during our package creation, we should complete a few more setup steps. Below we summarize the more thorough <code>usethis</code> instructions found <a href="https://usethis.r-lib.org/articles/articles/usethis-setup.html">here</a>:</p>
+<p><strong>Modify your .Rprofile:</strong> Here, we’ll (1) tell R to make <code>devtools</code> available anytime you’re doing interactive work [IS THIS RIGHT?] and (2) give R some information about how to automatically fill in fields that require default information from us (i.e. our name, email, etc.)</p>
+<ul>
+<li>Call <code>usethis::use_devtools()</code> and see that a <code>.Rprofile</code> script pops up.</li>
+<li>Paste the following into your <code>.Rprofile</code> script:</li>
+</ul>
+<pre class="r"><code>    if (interactive()) {
+      suppressMessages(require(devtools))
+    }</code></pre>
+<ul>
+<li>Save and re-start your R session</li>
+<li>Call <code>usethis::edit_r_profile()</code> to re-open your <code>.Rprofile</code></li>
+<li><p>Add the following to your <code>.Rprofile</code> script and modify any of the options to include your information. (<a href="https://orcid.org/">ORCID</a> is another form of digital identification, and you can register for a free ID number on their site).</p>
+<pre class="r"><code>options(
+  usethis.full_name = &quot;Jane Doe&quot;,
+  usethis.description = list(
+    `Authors@R` = &#39;person(&quot;Jane&quot;, &quot;Doe&quot;, email = &quot;jane@example.com&quot;, role = c(&quot;aut&quot;, &quot;cre&quot;), 
+    comment = c(ORCID = &quot;YOUR-ORCID-ID&quot;))&#39;, 
+    License = &quot;MIT + file LICENSE&quot;,
+    Version = &quot;0.0.0.9000&quot;
+  ),
+  usethis.protocol  = &quot;ssh&quot;
+)</code></pre></li>
+<li><p>Save and re-start your R session</p></li>
+</ul>
+<p><strong>Get and store a GitHub personal access token</strong> [Rephrase] In the steps below we generate a personal access token (PAT, i.e. a very long ID code) that <code>usethis</code> will need to communicate with github [???]. We will store this long ID in a file <code>.Renviron</code> as a variable called <code>GITHUB_PAT</code>. See below:</p>
+<ul>
+<li><code>usethis::browse_github_token()</code>: Generates a token. SAVE THIS TOKEN SOMEWHERE. Not a huge deal, but you will have to generate and save a new one if you lose this.</li>
+<li><code>usethis::edit_r_environ()</code>: Opens <code>.Renviron</code></li>
+<li>Paste <code>GITHUB_PAT =</code> followed by your PAT into <code>.Renviron</code></li>
+<li>Enter a new line after this variable. (Common mistake is to omit this.)</li>
+<li>Save and restart R and confirm that your PAT is now available with <code>git_sitrep()</code></li>
+</ul>
 </div>
+</div>
+</div>
+<div id="creating-a-minimally-viable-package" class="section level1">
+<h1>Creating a minimally viable package</h1>
+<p>This is going to make the github repository and create an active project, all in the following lines of code. Whatever you name your directory is what your package will be named. Replace <code>your-package-name</code> with whatever you’d like to call your package.</p>
+<pre class="r"><code>create_package(&quot;~/Desktop/your-package-name&quot;)
+use_git()
+use_github()</code></pre>
+<p>This will output a lot of stuff on your console, creating folders and files where they need to be created.</p>
+<p>[replace SCREENSHOT OF WHAT THIS LOOKS LIKE] <img src="https://www.hvitfeldt.me/img/blog/usethis-workflow-for-package-development/Screen%20Shot%202018-09-02%20at%2016.56.20.png" /> ### What are these folders</p>
+<p>[high-level overview of what each of these folders will house?, annotation?]</p>
+<div id="build-and-install" class="section level3">
+<h3>Build and install</h3>
+<p>Check that your new package works by clicking on <code>Install and Build</code> under the Build tab.</p>
+</div>
+</div>
+<div id="make-a-function" class="section level1">
+<h1>Make a function</h1>
+<p>As an educator, you probably won’t be using packages much to create custom functions, but as a quick exercise to show that your package works and can be installed. Let’s make one here that prints</p>
 </div>
 <div id="including-data-sets" class="section level1">
 <h1>Including data sets</h1>

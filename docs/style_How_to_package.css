@@ -6,7 +6,8 @@
 }
 
 body {
-	font-size: 22px;
+	font-size: 20px;
+	line-height: 150%;
 }
 
 h1 {
@@ -37,11 +38,17 @@ h1.title.toc-ignore {
 
 
 p {
-  margin: 2.5em 0 2.5em 0 !important;
+  margin: 2.3em 0 2.3em 0 !important;
 }
 
 ul {
   margin-bottom: 1em;
+}
+
+
+li {
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
   .main-container {
