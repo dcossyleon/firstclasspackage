@@ -33,14 +33,16 @@ knitr::opts_chunk$set(echo = TRUE)
 
 <br>
 
-# So you wanna make a package?
-
-[Intro text that tells you what you can do with a package as an educator. Kind of repeats above points, so need to merge.]
+# Why make a package?
 
 <center>![](Box.jpg){width=600px}</center>
 
+<br>
 
+As an educator you can use a package to easily deliver the contents of your lesson/ teaching material/ data to an audience. Your package doesn't have to be on CRAN, and it doesn't have to contain functions (but it can if you want!). Packages can be used creatively so that you can give your students custom data sets to work with, R Markdown "worksheets" that they can fill in or use as templates for completing exercises. You can also have students run LearnR tutorials with a package. These are interactive R Markdown docs that use Shiny.
 
+# So you wanna make a package?
+<br>
 ## Getting started
 
 Need to install and load the following: 
@@ -53,7 +55,6 @@ library(usethis)
 ```
 
 <br>
-
 
 ### You're not on your own
 Making a package involves creating an R project with several specific folders containing scripts and other intermediate files. We could create these folders manually, but we don't have to! There are some helper functions that streamline this folder-creation and organization process for us to make sure these files end up in the right place. (I know because I tried not using the helper functions, and my files got all sorts of messed up.)
@@ -70,18 +71,17 @@ Making a package involves creating an R project with several specific folders co
 
 To make the `usethis` package maximally helpful to us during our package creation, we should complete a few more setup steps. Below we summarize the more thorough `usethis` instructions found [here](https://usethis.r-lib.org/articles/articles/usethis-setup.html):
 
+<br>
 **Modify your .Rprofile:** 
 Here, we'll (1) tell R to make `devtools` available anytime you're doing interactive work [IS THIS RIGHT?] and (2) give R some information about how to automatically fill in fields that require default information from us (i.e. our name, email, etc.)
 
   * Call `usethis::use_devtools()` and see that a `.Rprofile` script pops up.
   * Paste the following into your `.Rprofile` script:
-  
 ```{r, eval=FALSE}
     if (interactive()) {
       suppressMessages(require(devtools))
     }
 ```
-  
   * Save and re-start your R session
   * Call `usethis::edit_r_profile()` to re-open your `.Rprofile`
   * Add the following to your `.Rprofile` script and modify any of the options to include your information. ([ORCID](https://orcid.org/) is another form of digital identification, and you can register for a free ID number on their site). 
@@ -99,16 +99,19 @@ Here, we'll (1) tell R to make `devtools` available anytime you're doing interac
     ```
   * Save and re-start your R session
 
+<br>
 **Get and store a GitHub personal access token** [Rephrase]
 In the steps below we generate a personal access token (PAT, i.e. a very long ID code) that `usethis` will need to communicate with github [???]. We will store this long ID in a file `.Renviron` as a variable called `GITHUB_PAT`. See below:
 
-  * `usethis::browse_github_token()`: Generates a token. SAVE THIS TOKEN SOMEWHERE. Not a huge deal, but you will have to generate and save a new one if you lose this.
+  * `usethis::browse_github_token()`: Generates a token. *Save this token somewhere.* Not a huge deal if you lose this, but you will have to generate and save a new one if you do.
   * `usethis::edit_r_environ()`: Opens `.Renviron`
   * Paste `GITHUB_PAT = ` followed by your PAT into `.Renviron`
   * Enter a new line after this variable. (Common mistake is to omit this.) 
   * Save and restart R and confirm that your PAT is now available with `git_sitrep()`
 
-# Creating a minimally viable package
+<br>
+
+### Create and name your minimally viable package
 This is going to make the github repository and create an active project, all in the following lines of code. Whatever you name your directory is what your package will be named. Replace `your-package-name` with whatever you'd like to call your package.
 
 ```{r, eval=FALSE}
@@ -123,17 +126,37 @@ This will output a lot of stuff on your console, creating folders and files wher
 
 [replace SCREENSHOT OF WHAT THIS LOOKS LIKE]
 ![](https://www.hvitfeldt.me/img/blog/usethis-workflow-for-package-development/Screen%20Shot%202018-09-02%20at%2016.56.20.png)
-### What are these folders
+
+<br>
+
+### What are these folders?
 
 [high-level overview of what each of these folders will house?, annotation?]
+
+* **Modify the DESCRIPTION file**: Make sure that the author, title, and description fields are correct.
+* **License the package**: [OPTIONAL?] How can others who find your material use it? You can run one of the following commands to fill in this field appropriately:
+    * `use_mit_license()`
+    * `use_gpl3_license()`
+    * `use_apl2_license()`
+    * `use_cc0_license()`
+* **Create a `README.Rmd`:** You can modify and knit this file like any other README
+    
+
+
+
+<br>
 
 ### Build and install
 
 Check that your new package works by clicking on `Install and Build` under the Build tab.
 
 
+
+
 # Make a function
 As an educator, you probably won't be using packages much to create custom functions, but as a quick exercise to show that your package works and can be installed. Let's make one here that prints 
+
+
 
 
 # Including data sets
@@ -141,22 +164,22 @@ What if you'd like your students to work with a specific data set. Should you em
 
 [graphic for how to do this]
 
-### FYI: Folders that will be generated that you'll be working with
-
+FYI: Folders that will be generated that you'll be working with
 - **Data:** 
 - **Data-raw:** This folder is where you can put all of your stuff. Scripts, csv files, whatever you want. 
 - **man:** This folder will contain intermediate output. You won't need to use the files in here directly, but they need to exist.
 - **R**: This is where your usable, callable data set will end up.
 
+<br>
 ### Step 1
 
 ```{r, eval=FALSE}
-create_package( )
+use_data_raw()
 
 ```
 
 
-
+<br>
 ### Install
 ```{r, eval=FALSE}
 # install.packages("remotes")

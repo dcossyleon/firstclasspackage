@@ -448,14 +448,17 @@ div.tocify {
 </ol>
 <p><br></p>
 </div>
-<div id="so-you-wanna-make-a-package" class="section level1">
-<h1>So you wanna make a package?</h1>
-<p>[Intro text that tells you what you can do with a package as an educator. Kind of repeats above points, so need to merge.]</p>
+<div id="why-make-a-package" class="section level1">
+<h1>Why make a package?</h1>
 <center>
 <img src="Box.jpg" width="600" />
 </center>
-<div id="getting-started" class="section level2">
-<h2>Getting started</h2>
+<p><br></p>
+<p>As an educator you can use a package to easily deliver the contents of your lesson/ teaching material/ data to an audience. Your package doesn’t have to be on CRAN, and it doesn’t have to contain functions (but it can if you want!). Packages can be used creatively so that you can give your students custom data sets to work with, R Markdown “worksheets” that they can fill in or use as templates for completing exercises. You can also have students run LearnR tutorials with a package. These are interactive R Markdown docs that use Shiny.</p>
+</div>
+<div id="so-you-wanna-make-a-package" class="section level1">
+<h1>So you wanna make a package?</h1>
+<p><br> ## Getting started</p>
 <p>Need to install and load the following:</p>
 <pre class="r"><code>#install.packages(c(&quot;devtools&quot;, &quot;roxygen2&quot;, &quot;usethis&quot;))
 library(devtools)
@@ -475,7 +478,7 @@ library(usethis)</code></pre>
 <div id="a-little-bit-more-setup" class="section level3">
 <h3>A little bit more setup</h3>
 <p>To make the <code>usethis</code> package maximally helpful to us during our package creation, we should complete a few more setup steps. Below we summarize the more thorough <code>usethis</code> instructions found <a href="https://usethis.r-lib.org/articles/articles/usethis-setup.html">here</a>:</p>
-<p><strong>Modify your .Rprofile:</strong> Here, we’ll (1) tell R to make <code>devtools</code> available anytime you’re doing interactive work [IS THIS RIGHT?] and (2) give R some information about how to automatically fill in fields that require default information from us (i.e. our name, email, etc.)</p>
+<p><br> <strong>Modify your .Rprofile:</strong> Here, we’ll (1) tell R to make <code>devtools</code> available anytime you’re doing interactive work [IS THIS RIGHT?] and (2) give R some information about how to automatically fill in fields that require default information from us (i.e. our name, email, etc.)</p>
 <ul>
 <li>Call <code>usethis::use_devtools()</code> and see that a <code>.Rprofile</code> script pops up.</li>
 <li>Paste the following into your <code>.Rprofile</code> script:</li>
@@ -499,26 +502,42 @@ library(usethis)</code></pre>
 )</code></pre></li>
 <li><p>Save and re-start your R session</p></li>
 </ul>
-<p><strong>Get and store a GitHub personal access token</strong> [Rephrase] In the steps below we generate a personal access token (PAT, i.e. a very long ID code) that <code>usethis</code> will need to communicate with github [???]. We will store this long ID in a file <code>.Renviron</code> as a variable called <code>GITHUB_PAT</code>. See below:</p>
+<p><br> <strong>Get and store a GitHub personal access token</strong> [Rephrase] In the steps below we generate a personal access token (PAT, i.e. a very long ID code) that <code>usethis</code> will need to communicate with github [???]. We will store this long ID in a file <code>.Renviron</code> as a variable called <code>GITHUB_PAT</code>. See below:</p>
 <ul>
-<li><code>usethis::browse_github_token()</code>: Generates a token. SAVE THIS TOKEN SOMEWHERE. Not a huge deal, but you will have to generate and save a new one if you lose this.</li>
+<li><code>usethis::browse_github_token()</code>: Generates a token. <em>Save this token somewhere.</em> Not a huge deal if you lose this, but you will have to generate and save a new one if you do.</li>
 <li><code>usethis::edit_r_environ()</code>: Opens <code>.Renviron</code></li>
 <li>Paste <code>GITHUB_PAT =</code> followed by your PAT into <code>.Renviron</code></li>
 <li>Enter a new line after this variable. (Common mistake is to omit this.)</li>
 <li>Save and restart R and confirm that your PAT is now available with <code>git_sitrep()</code></li>
 </ul>
+<p><br></p>
 </div>
-</div>
-</div>
-<div id="creating-a-minimally-viable-package" class="section level1">
-<h1>Creating a minimally viable package</h1>
+<div id="create-and-name-your-minimally-viable-package" class="section level3">
+<h3>Create and name your minimally viable package</h3>
 <p>This is going to make the github repository and create an active project, all in the following lines of code. Whatever you name your directory is what your package will be named. Replace <code>your-package-name</code> with whatever you’d like to call your package.</p>
 <pre class="r"><code>create_package(&quot;~/Desktop/your-package-name&quot;)
 use_git()
 use_github()</code></pre>
 <p>This will output a lot of stuff on your console, creating folders and files where they need to be created.</p>
-<p>[replace SCREENSHOT OF WHAT THIS LOOKS LIKE] <img src="https://www.hvitfeldt.me/img/blog/usethis-workflow-for-package-development/Screen%20Shot%202018-09-02%20at%2016.56.20.png" /> ### What are these folders</p>
+<p>[replace SCREENSHOT OF WHAT THIS LOOKS LIKE] <img src="https://www.hvitfeldt.me/img/blog/usethis-workflow-for-package-development/Screen%20Shot%202018-09-02%20at%2016.56.20.png" /></p>
+<p><br></p>
+</div>
+<div id="what-are-these-folders" class="section level3">
+<h3>What are these folders?</h3>
 <p>[high-level overview of what each of these folders will house?, annotation?]</p>
+<ul>
+<li><strong>Modify the DESCRIPTION file</strong>: Make sure that the author, title, and description fields are correct.</li>
+<li><strong>License the package</strong>: [OPTIONAL?] How can others who find your material use it? You can run one of the following commands to fill in this field appropriately:
+<ul>
+<li><code>use_mit_license()</code></li>
+<li><code>use_gpl3_license()</code></li>
+<li><code>use_apl2_license()</code></li>
+<li><code>use_cc0_license()</code></li>
+</ul></li>
+<li><strong>Create a <code>README.Rmd</code>:</strong> You can modify and knit this file like any other README</li>
+</ul>
+<p><br></p>
+</div>
 <div id="build-and-install" class="section level3">
 <h3>Build and install</h3>
 <p>Check that your new package works by clicking on <code>Install and Build</code> under the Build tab.</p>
@@ -532,27 +551,15 @@ use_github()</code></pre>
 <h1>Including data sets</h1>
 <p>What if you’d like your students to work with a specific data set. Should you email them an excel or .csv file? NO! You can include data sets in your package, ready to be summoned with the call of an object name.</p>
 <p>[graphic for how to do this]</p>
-<div id="fyi-folders-that-will-be-generated-that-youll-be-working-with" class="section level3">
-<h3>FYI: Folders that will be generated that you’ll be working with</h3>
-<ul>
-<li><strong>Data:</strong></li>
-<li><strong>Data-raw:</strong> This folder is where you can put all of your stuff. Scripts, csv files, whatever you want.</li>
-<li><strong>man:</strong> This folder will contain intermediate output. You won’t need to use the files in here directly, but they need to exist.</li>
-<li><strong>R</strong>: This is where your usable, callable data set will end up.</li>
-</ul>
-</div>
-<div id="step-1" class="section level3">
-<h3>Step 1</h3>
-<pre class="r"><code>create_package( )</code></pre>
-</div>
-<div id="install" class="section level3">
-<h3>Install</h3>
+<p>FYI: Folders that will be generated that you’ll be working with - <strong>Data:</strong> - <strong>Data-raw:</strong> This folder is where you can put all of your stuff. Scripts, csv files, whatever you want. - <strong>man:</strong> This folder will contain intermediate output. You won’t need to use the files in here directly, but they need to exist. - <strong>R</strong>: This is where your usable, callable data set will end up.</p>
+<p><br> ### Step 1</p>
+<pre class="r"><code>use_data_raw()</code></pre>
+<p><br> ### Install</p>
 <pre class="r"><code># install.packages(&quot;remotes&quot;)
 remotes::install_github(&quot;your-github-name/your-repository-name&quot;)</code></pre>
 <p><br></p>
 <pre class="r"><code>summary(cars)</code></pre>
 <p><br></p>
-</div>
 </div>
 <div id="including-a-template-.rmd-file." class="section level1">
 <h1>Including a template .Rmd file.</h1>
