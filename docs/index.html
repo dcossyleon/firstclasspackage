@@ -458,7 +458,9 @@ div.tocify {
 </div>
 <div id="so-you-wanna-make-a-package" class="section level1">
 <h1>So you wanna make a package?</h1>
-<p><br> ## Getting started</p>
+<p><br></p>
+<div id="getting-started" class="section level2">
+<h2>Getting started</h2>
 <p>Need to install and load the following:</p>
 <pre class="r"><code>#install.packages(c(&quot;devtools&quot;, &quot;roxygen2&quot;, &quot;usethis&quot;))
 library(devtools)
@@ -526,7 +528,7 @@ use_github()</code></pre>
 <h3>What are these folders?</h3>
 <p>[high-level overview of what each of these folders will house?, annotation?]</p>
 <ul>
-<li><strong>Modify the DESCRIPTION file</strong>: Make sure that the author, title, and description fields are correct.</li>
+<li><strong>Edit the DESCRIPTION file</strong>: Make sure that package metadata (e.g. the author, title, and description fields are correct).</li>
 <li><strong>License the package</strong>: [OPTIONAL?] How can others who find your material use it? You can run one of the following commands to fill in this field appropriately:
 <ul>
 <li><code>use_mit_license()</code></li>
@@ -535,6 +537,9 @@ use_github()</code></pre>
 <li><code>use_cc0_license()</code></li>
 </ul></li>
 <li><strong>Create a <code>README.Rmd</code>:</strong> You can modify and knit this file like any other README</li>
+<li><strong>R/</strong>: Contains R scripts for any code you create</li>
+<li><strong>man/</strong>: Contains documentation</li>
+<li>Everything else you don’t have to worry about</li>
 </ul>
 <p><br></p>
 </div>
@@ -543,9 +548,31 @@ use_github()</code></pre>
 <p>Check that your new package works by clicking on <code>Install and Build</code> under the Build tab.</p>
 </div>
 </div>
+</div>
 <div id="make-a-function" class="section level1">
 <h1>Make a function</h1>
-<p>As an educator, you probably won’t be using packages much to create custom functions, but as a quick exercise to show that your package works and can be installed. Let’s make one here that prints</p>
+<p>As an educator, you probably won’t be using packages much to create custom functions, but as a quick exercise to show that your package works and can be installed, let’s make one for fun.</p>
+<p><strong>Write the function</strong> * <code>use_r(&quot;my-functions&quot;)</code>: Creates and opens a new .R script in the <code>R/</code> folder. Add your function here in this <code>.R</code> file. * Example:</p>
+<pre class="r"><code>[insert example using glue() that prints something like &quot;welcome to first day of class&quot;]</code></pre>
+<ul>
+<li>Save</li>
+</ul>
+<div class="alert alert-note">
+<blockquote>
+<p><strong>A little more info:</strong> If you’d like to make multiple functions to go in a single package, you can add them all to the same .R script or you can create a new .R script for each one. It is up to you. [<strong>BUT IS IT ACTUALLY PREFERABLE TO KEEP THEM SEPARATE?</strong>]]</p>
+</blockquote>
+</div>
+<p><strong>Document the function</strong>: Here is where <code>roxygen2</code> that we installed earlier comes into play. <code>roxygen2</code> will add specially-formatted comments before each function tht will be used for package documentation. Here’s what those comments looks like:</p>
+<center>
+<img src="sample.jpg" alt="screenshot of roxygen2 comments" />
+</center>
+<ul>
+<li>[Click anywhere inside the function]</li>
+<li><code>Code</code> &gt; <code>Insert Roxygen Skeleton</code></li>
+<li>Add inline comments/ examples</li>
+<li>Run <code>document()</code> which will “make concrete” your roxygen comments. The NAMESPACE file, and <code>man/</code> folders will have been updated.</li>
+</ul>
+<p>Community resources on function-writing: * <a href="https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/">Hilary Parker</a> *</p>
 </div>
 <div id="including-data-sets" class="section level1">
 <h1>Including data sets</h1>
