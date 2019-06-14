@@ -3,8 +3,10 @@ output_dir: "docs"
 navbar:
   title: "firstclasspackage"
   left:
-  - text: "Tutorial"
+  - text: "Desiree's long version"
     href: index.html
+  - text: "Concise Tutorial"
+    href: 01_concise.html
 output:
   html_document:
     includes:
