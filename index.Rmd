@@ -519,7 +519,8 @@ learnr::run_tutorial("Lesson1", "testpackage")
 
 
 The above line of code is also how your users will be able to run your tutorial once they have installed your package.
-If you get errors, double check that your structure for the tutorial folders and files matches that of the `testpackage` directory. Make sure you Build, Install, and Restart before trying again. 
+
+If you get errors, double check that your structure for the tutorial folders and files matches that of those in the `testpackage` [repository](https://github.com/rstudio4edu/testpackage).  Make sure you Build, Install, and Restart before trying again. 
 
 
 <br>
