@@ -74,7 +74,7 @@ library(usethis)
 
 Specifically, we use the `create_package()` function to create the folders and files we need in the directory of our choosing. Its argument is the path (and consequently, also the name) of our package. Since we are already in the project directory that we'd like to use, we can replace the path with `getwd()`: 
 
-[IT THIS HACKY?]
+[IS THIS HACKY?]
 
 ```{r, eval=FALSE}
 create_package(getwd())
@@ -110,7 +110,7 @@ It is a good idea to  commit to GitHub at this point.
 
 ### Step 3: (Optionally) Edit DESCRIPTION file
 
-You can also edit the `DESCRIPTION` file to fill in the author (you) and other information about the package:
+You can also edit the `DESCRIPTION` file to fill in the author (your) info and other descriptive info about the package:
 
 <br>
 
@@ -133,17 +133,17 @@ You can also edit the `DESCRIPTION` file to fill in the author (you) and other i
 
 [SHOULD WE IGNORE THE CHECK STEP FOR NOW?]
 
-[CHECK WHETHER DEVTOOLS IS NECESSARY FOR THIS NEXT STEP]
+[IS LOADING DEVTOOLS ACTUALLY NECESSARY FOR THIS NEXT STEP?]
 
 The minimum package structure is in place, and now we go to `Build` > `Install and Restart` to make the package "official". And you're done!...well, kind of. Your package doesn't have anything useful in it (yet), but it does exist.
 
-[BETTER TO FIRST SUGGEST "Load all"LOAD ALL"?]
+[BETTER TO FIRST SUGGEST "LOAD ALL"?]
 
 <br>
 
 ### Step 5: Deliver
 
-Anyone can now install your package with the following code, substituting the field in quotes with your own GitHub username and package name in quotes:
+Anyone can now install your package with the following code, substituting the field in quotes with your own GitHub username and package name:
 
 ```{r, eval=FALSE}
 # install.packages("remotes")
@@ -495,11 +495,35 @@ This adds a `tutorial` folder to the `inst` directory.
 
 <center>![](images/tutorial_ss.png)</center>
 
-* Run your tutorial with the `run_tutorial("<tutorial-name>", "<package-name>")`.
+* Click `Run Document` next to the little green arrow in the toolbar of the .Rmd file.
+  + This will generate a `.html` file in the same directory as the tutorial .Rmd file and also run your tutorial locally.
+
+<br> 
+
+### Step 3: Add additional subdirectory
+
+At the time of writing, there is one additional folder that needs to be added, which `use_tutorial` did not create for us. 
+
+* Within the subdirectory `tutorials/`, add a new folder with the same name as your `.Rmd` tutorial file.
+* Move your tutorial .Rmd file and the .html for your tutorial into this new folder.
+* `Build` > `Install and Restart`
+
+<br>
+
+### Step 4: Run your tutorial
+* Run your tutorial with the `run_tutorial("<tutorial-name>", "<package-name>")`. 
 
 ```{r, eval=FALSE}
-learnr::run_tutorial("Lesson1", "firstclass")
+learnr::run_tutorial("Lesson1", "testpackage")
 ```
+
+
+The above line of code is also how your users will be able to run your tutorial once they have installed your package. 
+
+If you get errors, double check that your structure for the tutorial folders and files matches that of the `testpackage` directory. Make sure you Build, Install, and Restart before trying again. 
+
+
+<br>
 
 <br>
 
@@ -570,11 +594,11 @@ devtools::install_github("r-lib/usethis")
 
 <br>
 
-**Community resources on Package-making: **
+# Other community resources on package-making:
 
 You can find a diversity of additional helpful resources and tutorials on making R packages. We list a few below:
 
 * [Hilary Parker on basic package functions](https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/): bare-bones function making
-* [Writing an R package from scratch](https://r-mageddon.netlify.com/post/writing-an-r-package-from-scratch/) : Follows up on Hilary's, but incorporating usethis()
-* [Taking your data to go](https://www.davekleinschmidt.com/r-packages/): Straightforward, concise on data packages
+* [Writing an R package from scratch](https://r-mageddon.netlify.com/post/writing-an-r-package-from-scratch/) : Follows up on Hilary's but incorporates usethis()
+* [Taking your data to Go](https://www.davekleinschmidt.com/r-packages/): Straightforward, concise tutorial on data packages
 * [R Package Primer](https://kbroman.org/pkg_primer/)

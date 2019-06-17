@@ -482,7 +482,7 @@ div.tocify {
 <pre class="r"><code>#install.packages(&quot;usethis&quot;)
 library(usethis)</code></pre>
 <p>Specifically, we use the <code>create_package()</code> function to create the folders and files we need in the directory of our choosing. Its argument is the path (and consequently, also the name) of our package. Since we are already in the project directory that we’d like to use, we can replace the path with <code>getwd()</code>:</p>
-<p>[IT THIS HACKY?]</p>
+<p>[IS THIS HACKY?]</p>
 <pre class="r"><code>create_package(getwd())</code></pre>
 <p>The console output will ask if you’d like to overwrite the pre-existing R project. Select No.</p>
 <p><br></p>
@@ -507,7 +507,7 @@ library(usethis)</code></pre>
 </div>
 <div id="step-3-optionally-edit-description-file" class="section level3">
 <h3>Step 3: (Optionally) Edit DESCRIPTION file</h3>
-<p>You can also edit the <code>DESCRIPTION</code> file to fill in the author (you) and other information about the package:</p>
+<p>You can also edit the <code>DESCRIPTION</code> file to fill in the author (your) info and other descriptive info about the package:</p>
 <p><br></p>
 <center>
 <img src="images/description.png" width="500" />
@@ -525,14 +525,14 @@ library(usethis)</code></pre>
 <div id="step-4-build" class="section level3">
 <h3>Step 4: Build!</h3>
 <p>[SHOULD WE IGNORE THE CHECK STEP FOR NOW?]</p>
-<p>[CHECK WHETHER DEVTOOLS IS NECESSARY FOR THIS NEXT STEP]</p>
+<p>[IS LOADING DEVTOOLS ACTUALLY NECESSARY FOR THIS NEXT STEP?]</p>
 <p>The minimum package structure is in place, and now we go to <code>Build</code> &gt; <code>Install and Restart</code> to make the package “official”. And you’re done!…well, kind of. Your package doesn’t have anything useful in it (yet), but it does exist.</p>
-<p>[BETTER TO FIRST SUGGEST “Load all”LOAD ALL&quot;?]</p>
+<p>[BETTER TO FIRST SUGGEST “LOAD ALL”?]</p>
 <p><br></p>
 </div>
 <div id="step-5-deliver" class="section level3">
 <h3>Step 5: Deliver</h3>
-<p>Anyone can now install your package with the following code, substituting the field in quotes with your own GitHub username and package name in quotes:</p>
+<p>Anyone can now install your package with the following code, substituting the field in quotes with your own GitHub username and package name:</p>
 <pre class="r"><code># install.packages(&quot;remotes&quot;)
 remotes::install_github(&quot;rstudio4edu/testpackage&quot;)</code></pre>
 <p><br></p>
@@ -819,9 +819,32 @@ use_tutorial(&quot;Lesson1&quot;, &quot;My Title&quot;, open = interactive())</c
 <img src="images/tutorial_ss.png" />
 </center>
 <ul>
+<li>Click <code>Run Document</code> next to the little green arrow in the toolbar of the .Rmd file.
+<ul>
+<li>This will generate a <code>.html</code> file in the same directory as the tutorial .Rmd file and also run your tutorial locally.</li>
+</ul></li>
+</ul>
+<p><br></p>
+</div>
+<div id="step-3-add-additional-subdirectory" class="section level3">
+<h3>Step 3: Add additional subdirectory</h3>
+<p>At the time of writing, there is one additional folder that needs to be added, which <code>use_tutorial</code> did not create for us.</p>
+<ul>
+<li>Within the subdirectory <code>tutorials/</code>, add a new folder with the same name as your <code>.Rmd</code> tutorial file.</li>
+<li>Move your tutorial .Rmd file and the .html for your tutorial into this new folder.</li>
+<li><code>Build</code> &gt; <code>Install and Restart</code></li>
+</ul>
+<p><br></p>
+</div>
+<div id="step-4-run-your-tutorial" class="section level3">
+<h3>Step 4: Run your tutorial</h3>
+<ul>
 <li>Run your tutorial with the <code>run_tutorial(&quot;&lt;tutorial-name&gt;&quot;, &quot;&lt;package-name&gt;&quot;)</code>.</li>
 </ul>
-<pre class="r"><code>learnr::run_tutorial(&quot;Lesson1&quot;, &quot;firstclass&quot;)</code></pre>
+<pre class="r"><code>learnr::run_tutorial(&quot;Lesson1&quot;, &quot;testpackage&quot;)</code></pre>
+<p>The above line of code is also how your users will be able to run your tutorial once they have installed your package.</p>
+<p>If you get errors, double check that your structure for the tutorial folders and files matches that of the <code>testpackage</code> directory. Make sure you Build, Install, and Restart before trying again.</p>
+<p><br></p>
 <p><br></p>
 </div>
 </div>
@@ -890,12 +913,14 @@ devtools::install_github(&quot;r-lib/usethis&quot;)</code></pre>
 <li>Licensing educational materials [ASK GREG]</li>
 </ul>
 <p><br></p>
-<p><strong>Community resources on Package-making: </strong></p>
+</div>
+<div id="other-community-resources-on-package-making" class="section level1">
+<h1>Other community resources on package-making:</h1>
 <p>You can find a diversity of additional helpful resources and tutorials on making R packages. We list a few below:</p>
 <ul>
 <li><a href="https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/">Hilary Parker on basic package functions</a>: bare-bones function making</li>
-<li><a href="https://r-mageddon.netlify.com/post/writing-an-r-package-from-scratch/">Writing an R package from scratch</a> : Follows up on Hilary’s, but incorporating usethis()</li>
-<li><a href="https://www.davekleinschmidt.com/r-packages/">Taking your data to go</a>: Straightforward, concise on data packages</li>
+<li><a href="https://r-mageddon.netlify.com/post/writing-an-r-package-from-scratch/">Writing an R package from scratch</a> : Follows up on Hilary’s but incorporates usethis()</li>
+<li><a href="https://www.davekleinschmidt.com/r-packages/">Taking your data to Go</a>: Straightforward, concise tutorial on data packages</li>
 <li><a href="https://kbroman.org/pkg_primer/">R Package Primer</a></li>
 </ul>
 </div>
