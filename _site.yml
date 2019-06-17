@@ -1,12 +1,10 @@
-name: "firstclasspackage"
+name: "testpackage"
 output_dir: "docs"
 navbar:
   title: "firstclasspackage"
   left:
-  - text: "Desiree's long version"
+  - text: "Tutorial"
     href: index.html
-  - text: "Concise Tutorial"
-    href: 01_concise.html
 output:
   html_document:
     includes:
