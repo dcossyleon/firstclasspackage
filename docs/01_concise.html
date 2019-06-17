@@ -405,7 +405,11 @@ div.tocify {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+<<<<<<< HEAD
       <a class="navbar-brand" href="index.html">firstclasspackage</a>
+=======
+      <a class="navbar-brand" href="index.html">testpackage</a>
+>>>>>>> da9d98fd32e6d26c26cebeffe7d664a519fc63fc
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -438,6 +442,10 @@ div.tocify {
 <li>You understand how R projects work</li>
 <li>You understand the difference between a regular R script and an R Markdown document</li>
 </ol>
+<<<<<<< HEAD
+=======
+<p>[^ refine with j hester’s descriptions from talk]</p>
+>>>>>>> da9d98fd32e6d26c26cebeffe7d664a519fc63fc
 <p><strong>What you’ll learn:</strong></p>
 <ol style="list-style-type: decimal">
 <li>How to make a package that your students can download and install from GitHub</li>
@@ -450,7 +458,11 @@ div.tocify {
 <div id="why-make-a-package" class="section level1">
 <h1>Why make a package?</h1>
 <center>
+<<<<<<< HEAD
 <img src="images/Box.jpg" width="600" />
+=======
+<img src="Box.jpg" width="600" />
+>>>>>>> da9d98fd32e6d26c26cebeffe7d664a519fc63fc
 </center>
 <p><br></p>
 <p>As an educator you can use a package to easily deliver the contents of your lesson/ teaching material/ data to an audience. Your package doesn’t have to be on CRAN, and it doesn’t have to contain functions (but it can if you want!). Packages can be used creatively so that you can give your students custom data sets to work with, R Markdown “worksheets” that they can fill in or use as templates for completing exercises. You can also have students run LearnR tutorials with a package. These are interactive R Markdown docs that use Shiny.</p>
@@ -486,19 +498,31 @@ library(usethis)</code></pre>
 <p>The console output will ask if you’d like to overwrite the pre-existing R project. Select No.</p>
 <p><br></p>
 <center>
+<<<<<<< HEAD
 <img src="images/create_package_ss.png" width="500" />
+=======
+<img src="create_package_ss.png" width="500" />
+>>>>>>> da9d98fd32e6d26c26cebeffe7d664a519fc63fc
 </center>
 <p><br></p>
 <p>A new session of RStudio will open, which will appear almost duplicate to the one you had open previously with one important difference: this new one has a <code>Build</code> tab in the pane which also has the tabs <code>Environment</code>, <code>History</code>, etc. This tab is specific for building packages, and we will use it later. You can close the other RStudio instance.</p>
 <p><br></p>
 <center>
+<<<<<<< HEAD
 <img src="images/build_tab.png" width="500" />
+=======
+<img src="build_tab.png" width="500" />
+>>>>>>> da9d98fd32e6d26c26cebeffe7d664a519fc63fc
 </center>
 <p><br></p>
 <p>You can now confirm that <code>create_package()</code> has created some new files which we see in our <code>Files</code> pane:</p>
 <p><br></p>
 <center>
+<<<<<<< HEAD
 <img src="images/cp_files.png" width="500" />
+=======
+<img src="cp_files.png" width="500" />
+>>>>>>> da9d98fd32e6d26c26cebeffe7d664a519fc63fc
 </center>
 <p><br></p>
 <p>It is a good idea to commit to GitHub at this point.</p>
@@ -509,7 +533,11 @@ library(usethis)</code></pre>
 <p>You can also edit the <code>DESCRIPTION</code> file to fill in the author (you) and other information about the package:</p>
 <p><br></p>
 <center>
+<<<<<<< HEAD
 <img src="images/description.png" width="500" />
+=======
+<img src="description.png" width="500" />
+>>>>>>> da9d98fd32e6d26c26cebeffe7d664a519fc63fc
 </center>
 <p><br></p>
 <p>[Commit again]</p>
@@ -557,14 +585,22 @@ remotes::install_github(&quot;rstudio4edu/testpackage&quot;)</code></pre>
 <pre class="r"><code>use_data_raw()</code></pre>
 <p>This new folder houses a <code>DATASET.R</code> script.</p>
 <center>
+<<<<<<< HEAD
 <img src="images/datasetr.png" width="500" />
+=======
+<img src="datasetr.png" width="500" />
+>>>>>>> da9d98fd32e6d26c26cebeffe7d664a519fc63fc
 </center>
 <p><br></p>
 <ul>
 <li>Add your raw data file to the <code>data-raw</code> folder. I am adding a <code>.csv</code> file called <code>aggression_behavior.csv</code>.</li>
 </ul>
 <center>
+<<<<<<< HEAD
 <img src="images/data-raw.png" width="500" />
+=======
+<img src="data-raw.png" width="500" />
+>>>>>>> da9d98fd32e6d26c26cebeffe7d664a519fc63fc
 </center>
 <p><br></p>
 <div class="alert alert-note">
@@ -594,7 +630,11 @@ aggression_behavior &lt;- readr::read_csv(here::here(&quot;data-raw&quot;, &quot
 usethis::use_data(aggression_behavior, overwrite = TRUE) # add overwrite option</code></pre>
 <p><br></p>
 <center>
+<<<<<<< HEAD
 <img src="images/rdafile.png" width="500" />
+=======
+<img src="rdafile.png" width="500" />
+>>>>>>> da9d98fd32e6d26c26cebeffe7d664a519fc63fc
 </center>
 <p><br></p>
 <div class="alert alert-note">
@@ -643,7 +683,11 @@ usethis::use_data(aggression_behavior, overwrite = TRUE) # add overwrite option<
 <p>This generates a <code>.R</code> script that lives in the <code>R/ folder</code>.</p>
 <p><br></p>
 <center>
+<<<<<<< HEAD
 <img src="images/Rfiledataset.png" width="500" />
+=======
+<img src="Rfiledataset.png" width="500" />
+>>>>>>> da9d98fd32e6d26c26cebeffe7d664a519fc63fc
 </center>
 <p><br></p>
 <p>Add information about the data set:</p>
@@ -681,7 +725,11 @@ usethis::use_data(aggression_behavior, overwrite = TRUE) # add overwrite option<
 <p><br></p>
 <div class="alert alert-note">
 <blockquote>
+<<<<<<< HEAD
 <p><strong>Note:</strong> To read more about Roxygen comments, check out <a href="images/https://r-pkgs.org/man.html">6.3 Roxygen Comments, R Packages</a>.</p>
+=======
+<p><strong>Note:</strong> To read more about Roxygen comments, check out <a href="https://r-pkgs.org/man.html">6.3 Roxygen Comments, R Packages</a>.</p>
+>>>>>>> da9d98fd32e6d26c26cebeffe7d664a519fc63fc
 </blockquote>
 </div>
 <ul>
@@ -695,7 +743,11 @@ document()</code></pre>
 <p>This generates a .Rd file, that makes our documentation accessible to the package. [PHRASING?] This file lives inside a newly-generated <code>man/</code> folder.</p>
 <p><br></p>
 <center>
+<<<<<<< HEAD
 <img src="images/manfolder.png" width="500" />
+=======
+<img src="manfolder.png" width="500" />
+>>>>>>> da9d98fd32e6d26c26cebeffe7d664a519fc63fc
 </center>
 <p><br></p>
 <p>Now we can check that our documentation works:</p>
@@ -705,7 +757,11 @@ document()</code></pre>
 </ul>
 <p><br></p>
 <center>
+<<<<<<< HEAD
 <img src="images/datadoc.png" width="500" />
+=======
+<img src="datadoc.png" width="500" />
+>>>>>>> da9d98fd32e6d26c26cebeffe7d664a519fc63fc
 </center>
 <p><br></p>
 </div>
@@ -748,7 +804,11 @@ document()</code></pre>
 ✔ Writing &#39;inst/rmarkdown/templates/worksheet1/skeleton/skeleton.Rmd&#39;
 &gt; </code></pre>
 <p>This creates a new folder in the root package directory <code>inst/</code> with several subdirectories.</p>
+<<<<<<< HEAD
 <p><a href="images/skeletonss.png" width="500px"></a></p>
+=======
+<p><a href="skeletonss.png" width="500px"></a></p>
+>>>>>>> da9d98fd32e6d26c26cebeffe7d664a519fc63fc
 <p><br></p>
 </div>
 <div id="step-2-create-your-template" class="section level3">
@@ -762,7 +822,11 @@ document()</code></pre>
 <li>Save, <code>Build</code> &gt; <code>Install and Restart</code></li>
 </ul>
 <center>
+<<<<<<< HEAD
 <img src="images/template_example.png" width="500" />
+=======
+<img src="template_example.png" width="500" />
+>>>>>>> da9d98fd32e6d26c26cebeffe7d664a519fc63fc
 </center>
 <p><br></p>
 <p>You can get ideas for how minimal <code>.Rmd</code> templates can be customized by checkout out a few example templates <a href="https://github.com/dr-harper/example-rmd-templates">here</a>.</p>
@@ -774,7 +838,11 @@ document()</code></pre>
 <li>Once your R session has been restarted, navigate to <code>File</code> &gt; <code>New File</code> &gt; <code>R Markdown</code>. Select <code>From Template</code> from the dialogue box menu. Your custom R Markdown template will appear there. Voilà!</li>
 </ul>
 <center>
+<<<<<<< HEAD
 <img src="images/dialogue_box.png" width="500" />
+=======
+<img src="dialogue_box.png" width="500" />
+>>>>>>> da9d98fd32e6d26c26cebeffe7d664a519fc63fc
 </center>
 <p><br></p>
 <div class="alert alert-note">
@@ -802,7 +870,11 @@ document()</code></pre>
 <li>Install the <code>learnr</code> package</li>
 <li>Run <code>use_tutorial(&quot;&lt;name-of-tutorial-file&gt;&quot;, &quot;&lt;title-you'd-like-the-user-to-see&gt;&quot;, open = interactive())</code></li>
 </ul>
+<<<<<<< HEAD
 <pre class="r"><code>remotes::install_github(&quot;rstudio/learnr&quot;)
+=======
+<pre class="r"><code>remotes::install_github(&quot;rstudio/learnr&quot;, force=TRUE)
+>>>>>>> da9d98fd32e6d26c26cebeffe7d664a519fc63fc
 
 use_tutorial(&quot;Lesson1&quot;, &quot;My Title&quot;, open = interactive())</code></pre>
 <p><br></p>
@@ -813,6 +885,7 @@ use_tutorial(&quot;Lesson1&quot;, &quot;My Title&quot;, open = interactive())</c
 <h3>Step 2: Customize your tutorial</h3>
 <ul>
 <li>The <code>.Rmd</code> file inside the <code>tutorial</code> folder is automatically opened. Edit it to customize your tutorial content.</li>
+<<<<<<< HEAD
 </ul>
 <center>
 <img src="images/tutorial_ss.png" />
@@ -821,12 +894,45 @@ use_tutorial(&quot;Lesson1&quot;, &quot;My Title&quot;, open = interactive())</c
 <li>Run your tutorial with the <code>run_tutorial(&quot;&lt;tutorial-name&gt;&quot;, &quot;&lt;package-name&gt;&quot;)</code>.</li>
 </ul>
 <pre class="r"><code>learnr::run_tutorial(&quot;Lesson1&quot;, &quot;firstclass&quot;)</code></pre>
+=======
+<li>Save and close.</li>
+</ul>
+<center>
+<img src="tutorial_ss.png" />
+</center>
+<p><br></p>
+</div>
+<div id="step-3-add-an-additional-folder" class="section level3">
+<h3>Step 3: Add an additional folder</h3>
+<p>At the time of writing, there is one <strong>important</strong> subdirectory fix we need to make in order for our tutorial to run.</p>
+<ul>
+<li>Add a folder with the same name as your .Rmd tutorial file. Place it within the <code>tutorials</code> folder.</li>
+<li>Move the tutorial <code>.Rmd</code> file inside the new folder.</li>
+</ul>
+<center>
+<img src="folders.png" width="400" />
+</center>
+<p>For each tutorial that you make, you will need to repeat this step.</p>
+<p><br></p>
+</div>
+<div id="step-4-run-your-tutorial" class="section level3">
+<h3>Step 4: Run your tutorial</h3>
+<ul>
+<li>Using <code>usethis::run_tutorial(&quot;&lt;tutorial-name&gt;&quot;, &quot;&lt;package-name&gt;&quot;)</code>, you will be able to run the tutorial.</li>
+</ul>
+<pre class="r"><code>learnr::run_tutorial(&quot;Lesson1&quot;, &quot;firstclass&quot;)</code></pre>
+<p>Once your package has been installed by your students, they will also be able to run the tutorial using script above. You can include this information in the README for your package.</p>
+>>>>>>> da9d98fd32e6d26c26cebeffe7d664a519fc63fc
 <p><br></p>
 </div>
 </div>
 </div>
 <div id="part-5-final-steps" class="section level1">
+<<<<<<< HEAD
 <h1>PART 5: FINAL STEPS:</h1>
+=======
+<h1>PART 5: FINAL STEPS</h1>
+>>>>>>> da9d98fd32e6d26c26cebeffe7d664a519fc63fc
 <div id="optionally-document-the-package-as-a-whole" class="section level3">
 <h3>(Optionally) Document the package as a whole</h3>
 <p>We created documentation for the data set, but not for the package overall. To do so:</p>
@@ -885,11 +991,21 @@ devtools::install_github(&quot;r-lib/usethis&quot;)</code></pre>
 <div id="miscellaneous-nice-to-know" class="section level1">
 <h1>Miscellaneous / Nice to Know</h1>
 <ul>
+<<<<<<< HEAD
 <li>If you didn’t start with a repo, then you should use <code>usethis::use_github()</code></li>
 <li>Licensing educational materials [ASK GREG]</li>
 </ul>
 <p><br></p>
 <p><strong>Community resources on Package-making: </strong></p>
+=======
+<li>If you didn’t start with a github repository, then you should use <code>usethis::use_github()</code></li>
+<li>Licensing educational materials [ASK GREG]</li>
+</ul>
+<p><br></p>
+</div>
+<div id="other-community-resources-on-package-making" class="section level1">
+<h1>Other community resources on package-making:</h1>
+>>>>>>> da9d98fd32e6d26c26cebeffe7d664a519fc63fc
 <p>You can find a diversity of additional helpful resources and tutorials on making R packages. We list a few below:</p>
 <ul>
 <li><a href="https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/">Hilary Parker on basic package functions</a>: bare-bones function making</li>
