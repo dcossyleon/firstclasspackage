@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>How to build a package for your classroom</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<head>
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=10.0,initial-scale=1.0">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-135221736-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-135221736-1');
+	</script>
+</head>
+<link href="https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Arvo|Crimson+Text|Lora|PT+Serif&display=swap" rel="stylesheet">
+<link href="style_How_to_package.css" rel="stylesheet">
+
+  <div class="image-descript">
+		<img class="big_image" src="firstclass.jpg">
+		<div class="image-text">
+		  <div class= "image-text-grey-box">
+  			<div class="lil-image-text"> Using RStudio as an educator:</div>
+  			<div class="big-image-text"><strong>Building a package</strong></div>
+  		</div>
+		</div>
+  </div>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="style_How_to_package.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">testpackage</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="01_concise.html">Tutorial</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">How to build a package for your classroom</h1>
+
+</div>
+
+
+<div id="is-this-tutorial-for-you" class="section level1">
+<h1>Is this tutorial for you?</h1>
+<p><strong>Pre-requisites:</strong></p>
+<ol style="list-style-type: decimal">
+<li>You have a GitHub account</li>
+<li>You are comfortable with the basics of using R and RStudio</li>
+<li>You understand how R projects work</li>
+<li>You understand the difference between a regular R script and an R Markdown document</li>
+</ol>
+<p>[^ refine with j hester’s descriptions from talk]</p>
+<p><strong>What you’ll learn:</strong></p>
+<ol style="list-style-type: decimal">
+<li>How to make a package that your students can download and install from GitHub</li>
+<li>How to include a raw data set in your package</li>
+<li>How to create a custom template in your package that your learners can use for worksheets, training materials, assigment templates, etc.</li>
+<li>How to give your students access to a custom interactive tutorial/lesson</li>
+</ol>
+<p><br></p>
+</div>
+<div id="why-make-a-package" class="section level1">
+<h1>Why make a package?</h1>
+<center>
+<img src="Box.jpg" width="600" />
+</center>
+<p><br></p>
+<p>As an educator you can use a package to easily deliver the contents of your lesson/ teaching material/ data to an audience. Your package doesn’t have to be on CRAN, and it doesn’t have to contain functions (but it can if you want!). Packages can be used creatively so that you can give your students custom data sets to work with, R Markdown “worksheets” that they can fill in or use as templates for completing exercises. You can also have students run LearnR tutorials with a package. These are interactive R Markdown docs that use Shiny.</p>
+<p><br></p>
+</div>
+<div id="part-1-creating-bare-bones-package-structure" class="section level1">
+<h1>PART 1: Creating bare bones package structure</h1>
+<p>Here we will make a bare bones package that is educator-ready. The final goal will be to create a package that is “downloadable” by your students which means this package needs to have a GitHub repository so that it can be easily shared.</p>
+<p><br></p>
+<div id="step-1-make-a-github-repo-for-the-package" class="section level3">
+<h3>Step 1: Make a GitHub repo for the package</h3>
+<p>If you’re still a beginner when it comes to integrating RStudio and Git, then the clearest way to begin making our package is by creating a GitHub repository for our package-to-be and then creating our project in RStudio afterwards. Follow the instructions in the <a href="https://happygitwithr.com/new-github-first.html">“New project, GitHub first” chapter of Happy Git with R</a> to link your new repo with RStudio, and keep in mind the following as you do so:</p>
+<br>
+<div class="alert alert-note">
+<blockquote>
+<p><strong>What’s in a name?</strong> It’ll be easiest if you give your GitHub repository the same name that you’d like to give your package. It will make things less confusing. As such, the name you choose must 1) include only letters, numbers, or <code>.</code>, 2) start with a letter, and 3) not end with a <code>.</code> Optionally, you can also consider the naming tips <a href="https://r-pkgs.org/package-structure.html">here</a>.</p>
+</blockquote>
+<blockquote>
+<p><strong>Where to put this project directory?</strong> Make sure your project directory that we will use to make this package is not nested within any other projects, folders, or repos. It should be its own thing.</p>
+</blockquote>
+</div>
+<p><br></p>
+</div>
+<div id="step-2-create-the-package-in-rstudio" class="section level3">
+<h3>Step 2: Create the package in RStudio</h3>
+<p>Below, we distill the more comprehensive resource <a href="https://r-pkgs.org/whole-game.html">R packages</a> down to the basics. Now that your GitHub-connected project has been created, it’s time to put in the scaffolding for our bare-minimum package, which will primarily consist of the addition of specific folders and files to our project directory.</p>
+<p>Though we could do this manually, it’s much easier to rely on helper functions from the <code>usethis</code> package to do this for us.</p>
+<pre class="r"><code>#install.packages(&quot;usethis&quot;)
+library(usethis)</code></pre>
+<p>Specifically, we use the <code>create_package()</code> function to create the folders and files we need in the directory of our choosing. Its argument is the path (and consequently, also the name) of our package. Since we are already in the project directory that we’d like to use, we can replace the path with <code>getwd()</code>:</p>
+<p>[IT THIS HACKY?]</p>
+<pre class="r"><code>create_package(getwd())</code></pre>
+<p>The console output will ask if you’d like to overwrite the pre-existing R project. Select No.</p>
+<p><br></p>
+<center>
+<img src="create_package_ss.png" width="500" />
+</center>
+<p><br></p>
+<p>A new session of RStudio will open, which will appear almost duplicate to the one you had open previously with one important difference: this new one has a <code>Build</code> tab in the pane which also has the tabs <code>Environment</code>, <code>History</code>, etc. This tab is specific for building packages, and we will use it later. You can close the other RStudio instance.</p>
+<p><br></p>
+<center>
+<img src="build_tab.png" width="500" />
+</center>
+<p><br></p>
+<p>You can now confirm that <code>create_package()</code> has created some new files which we see in our <code>Files</code> pane:</p>
+<p><br></p>
+<center>
+<img src="cp_files.png" width="500" />
+</center>
+<p><br></p>
+<p>It is a good idea to commit to GitHub at this point.</p>
+<p><br></p>
+</div>
+<div id="step-3-optionally-edit-description-file" class="section level3">
+<h3>Step 3: (Optionally) Edit DESCRIPTION file</h3>
+<p>You can also edit the <code>DESCRIPTION</code> file to fill in the author (you) and other information about the package:</p>
+<p><br></p>
+<center>
+<img src="description.png" width="500" />
+</center>
+<p><br></p>
+<p>[Commit again]</p>
+<p><br></p>
+<div class="alert alert-note">
+<blockquote>
+<p><strong>FYI</strong>: At this point in package-making is when you could begin to create custom functions if you wanted to (e.g. <a href="https://r-pkgs.org/whole-game.html#write-the-first-function">as described here</a> and <a href="https://r-mageddon.netlify.com/post/writing-an-r-package-from-scratch/">here</a>, but this is not a goal of the present tutorial).</p>
+</blockquote>
+</div>
+<p><br></p>
+</div>
+<div id="step-4-build" class="section level3">
+<h3>Step 4: Build!</h3>
+<p>[SHOULD WE IGNORE THE CHECK STEP FOR NOW?]</p>
+<p>[CHECK WHETHER DEVTOOLS IS NECESSARY FOR THIS NEXT STEP]</p>
+<p>The minimum package structure is in place, and now we go to <code>Build</code> &gt; <code>Install and Restart</code> to make the package “official”. And you’re done!…well, kind of. Your package doesn’t have anything useful in it (yet), but it does exist.</p>
+<p>[BETTER TO FIRST SUGGEST “Load all”LOAD ALL&quot;?]</p>
+<p><br></p>
+</div>
+<div id="step-5-deliver" class="section level3">
+<h3>Step 5: Deliver</h3>
+<p>Anyone can now install your package with the following code, substituting the field in quotes with your own GitHub username and package name in quotes:</p>
+<pre class="r"><code># install.packages(&quot;remotes&quot;)
+remotes::install_github(&quot;rstudio4edu/testpackage&quot;)</code></pre>
+<p><br></p>
+<p>We next demonstrate how to include custom data in package.</p>
+<p><br></p>
+</div>
+</div>
+<div id="part-2-including-data-sets" class="section level1">
+<h1>PART 2: Including data sets</h1>
+<p>Assuming you have followed the previous steps for building the basic structure of a package, we now demonstrate how to package up some data for your students.</p>
+<p><br></p>
+<div id="why-do-this" class="section level2">
+<h2>Why do this?</h2>
+<p>What if you’d like your students to work with a specific data set? Should you email them an excel or .csv file or upload it onto an oustide learning platform? No! You can include data sets in your package, ready to be summoned with the call of an object name. This saves precious instruction time that might otherwise be wasted and also helps students get to the fun stuff (analysis!) faster.</p>
+<p><br></p>
+<p>[IMAGE OVERVIEW: messy data in data-raw/ w/ scripts –&gt; cleaned up. callable version in data/ –&gt; Documenting: name of package in R/ –&gt; Documenting –&gt; ]</p>
+<p><br></p>
+<div id="step-1-add-raw-data-file" class="section level3">
+<h3>Step 1: Add raw data file</h3>
+<ul>
+<li>Call <code>usethis::use_data_raw</code> to create a folder called <code>data-raw</code>. We will use this folder as a general storage space for any raw data files, data pre-processing scripts, etc. that we don’t want to be built into our final package.</li>
+</ul>
+<pre class="r"><code>use_data_raw()</code></pre>
+<p>This new folder houses a <code>DATASET.R</code> script.</p>
+<center>
+<img src="datasetr.png" width="500" />
+</center>
+<p><br></p>
+<ul>
+<li>Add your raw data file to the <code>data-raw</code> folder. I am adding a <code>.csv</code> file called <code>aggression_behavior.csv</code>.</li>
+</ul>
+<center>
+<img src="data-raw.png" width="500" />
+</center>
+<p><br></p>
+<div class="alert alert-note">
+<blockquote>
+<p><strong>Note</strong>: It’s always a good idea to start with the most unprocessed, messy version of the data in the <code>data-raw</code> folder along with scripts to clean it up, so that your workflow is reproducible.</p>
+</blockquote>
+</div>
+<p><br></p>
+</div>
+<div id="step-2-save-clean-data-to-data" class="section level3">
+<h3>Step 2: Save clean data to <code>data/</code></h3>
+<p>Edit the <code>DATASET.R</code> script:</p>
+<ul>
+<li>Read in the <code>.csv</code> file containing our raw data.</li>
+<li>Include any code necessary for processing or cleaning to ready the data set as you’d like it to be presented in the package.</li>
+<li>Run <code>usethis::use_data()</code> which will export an <code>.rda</code>-formatted data file to a new folder, <code>data</code>. Any data in this folder will be accessible to the user.</li>
+</ul>
+<p>[SHOULD WE MENTION ANYTHING ABOUT HERE::HERE?]</p>
+<pre class="r"><code>## code to prepare `DATASET` dataset goes here
+
+# Read in your .csv file
+aggression_behavior &lt;- readr::read_csv(here::here(&quot;data-raw&quot;, &quot;aggression_behavior.csv&quot;))
+
+# Include any processing steps here as well
+
+# Export to `data/` as .rda file
+usethis::use_data(aggression_behavior, overwrite = TRUE) # add overwrite option</code></pre>
+<p><br></p>
+<center>
+<img src="rdafile.png" width="500" />
+</center>
+<p><br></p>
+<div class="alert alert-note">
+<blockquote>
+<p><strong>FYI</strong>: The reason .rda (also called .RData) files are use in packaged data sets is because this data file format is much faster to read in than .csv files.</p>
+</blockquote>
+</div>
+<p><br></p>
+<p>Your data is now callable! Check that you can access your data.</p>
+<ul>
+<li>Click <code>Build</code> &gt; <code>Load All</code></li>
+<li>Print your data set object:</li>
+</ul>
+<pre class="r"><code>aggression_behavior
+
+# A tibble: 214 x 11
+   focal compound birthyr obyear  rank `infant?` attack_all chase_all threatcontact_a…
+   &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;            &lt;dbl&gt;
+ 1 bs9   a1          2003   2008     3 N                  0         0            0    
+ 2 gk3   a1          1991   2007     1 Y                  0         0            0    
+ 3 se8   a1          2001   2008     1 N                  0         0            0    
+ 4 qq8   a1          2001   2008     3 N                  0         0            2.23 
+ 5 vd8   a1          2001   2008     3 Y                  0         0            0.998
+ 6 qv5   a1          1996   2008     3 Y                  0         0            0    
+ 7 sr8   a1          2001   2008     2 N                  0         0            0    
+ 8 pk8   a1          2001   2008     2 Y                  0         0            0    
+ 9 oz4   a1          1994   2008     1 N                  0         0            0    
+10 hv5   a1          1996   2007     2 N                  0         0            0    
+# … with 204 more rows, and 2 more variables: threatnocontact_all &lt;dbl&gt;, agg_in &lt;dbl&gt;
+&gt; </code></pre>
+<p><br></p>
+<div class="alert alert-note">
+<blockquote>
+<p><strong>Note</strong>: If you later decide to update the underlying raw .csv file, you will have to manually run the script in Step 2 again before re-building, loading, installing the package. The reason is that when packages are built, loaded, installed, etc., any contents in data-raw/ are ignored by default.</p>
+</blockquote>
+</div>
+<p><br></p>
+</div>
+<div id="step-3-document-the-data-set" class="section level3">
+<h3>Step 3: Document the data set</h3>
+<p>Because this will be a data set that is shared with others, it’s important to add reference documentation for it.</p>
+<ul>
+<li>Use <code>usethis::use_r()</code> with your data set name in quotes.</li>
+</ul>
+<pre class="r"><code>use_r(&quot;aggression_behavior&quot;)</code></pre>
+<p>This generates a <code>.R</code> script that lives in the <code>R/ folder</code>.</p>
+<p><br></p>
+<center>
+<img src="Rfiledataset.png" width="500" />
+</center>
+<p><br></p>
+<p>Add information about the data set:</p>
+<ul>
+<li>In the .R file, add the name of the data set object in quotes.</li>
+<li>Above the quoted object name, paste in specially-formatted comments (see the example below), called Roxygen comments.</li>
+<li>Manually edit the information to reflect the columns in your data set [IS THIS REALLY NOT A BETTER WAY TO DO THIS?].</li>
+</ul>
+<p>(No “roxygen skeleton for data sets?”</p>
+<ul>
+<li><a href="https://github.com/r-lib/usethis/issues/51">link0</a></li>
+<li><a href="https://github.com/r-lib/usethis/issues/274">link1</a></li>
+<li><a href="https://stackoverflow.com/questions/51092509/whats-the-best-way-to-automatically-generate-roxygen2-documentation-for-a-data">link2</a>)</li>
+</ul>
+<p>This is what will become our documentation.</p>
+<pre class="r"><code>#&#39; Data of aggression behaviors observed in rhesus macaques
+#&#39;
+#&#39;
+#&#39;
+#&#39; @format A data frame with 214 rows representing individual &quot;focal&quot; rhesus and 11 variables:
+#&#39; \describe{
+#&#39;   \item{focal}{character denoting the subject ID of the rhesus}
+#&#39;   \item{compound}{a character indicating the social group the focal belongs to}
+#&#39;   \item{birthyr}{dbl denoting focal&#39;s year of birth}
+#&#39;   \item{obyear}{dbl denoting year of behavioral observation when data were collected on the focal}
+#&#39;   \item{rank}{dbl denoting high, middle, or low social rank of the focal (1, 2, or 3)}
+#&#39;   \item{infant?}{character denoting whether or not the focal had an infant less than 1 year old during time of observation}
+#&#39;   \item{attack_all}{average number of times an attack was intitiated by the }
+#&#39;   \item{chase_all}{a character string giving given name}
+#&#39;   \item{threatcontact_all}{a character string giving given name}
+#&#39;   \item{agg_in}{number of times aggression was initiated by the focal}
+#&#39; }
+#&#39; @source aggression_behavior.csv file
+&quot;aggression_behavior&quot;</code></pre>
+<p><br></p>
+<div class="alert alert-note">
+<blockquote>
+<p><strong>Note:</strong> To read more about Roxygen comments, check out <a href="https://r-pkgs.org/man.html">6.3 Roxygen Comments, R Packages</a>.</p>
+</blockquote>
+</div>
+<ul>
+<li>Use <code>devtools::document()</code> to make the roxygen comments “concrete”.</li>
+</ul>
+<pre class="r"><code>#install.packages(c(&quot;devtools&quot;, &quot;roxygen2&quot;))
+library(roxygen2)
+library(devtools)
+
+document()</code></pre>
+<p>This generates a .Rd file, that makes our documentation accessible to the package. [PHRASING?] This file lives inside a newly-generated <code>man/</code> folder.</p>
+<p><br></p>
+<center>
+<img src="manfolder.png" width="500" />
+</center>
+<p><br></p>
+<p>Now we can check that our documentation works:</p>
+<ul>
+<li>Call <code>? aggression_behavior</code>, substituting the name of your data set.</li>
+<li>If everything looks good, then you’re done! If not, edit the roxygen-style comments in the .R file and <code>document()</code> again until you’re satisfied.</li>
+</ul>
+<p><br></p>
+<center>
+<img src="datadoc.png" width="500" />
+</center>
+<p><br></p>
+</div>
+<div id="step-4-build-and-install" class="section level3">
+<h3>Step 4: Build and install</h3>
+<ul>
+<li>As before, click on <code>Install and Build</code> under the Build tab.</li>
+</ul>
+<p>Congratulations, your package now includes a documented data set! It can be downloaded and installed as recommeded in <strong>Step 5: Deliver</strong> of <strong>Part 1</strong>.</p>
+<p>If you’d like to create a worksheet-like component for your package, continue with <strong>Part 3</strong>. Otherwise, skip to <strong>Final Steps</strong> for some recommendations on a couple final (and optional) package components.</p>
+<p><br></p>
+</div>
+</div>
+</div>
+<div id="part-3-including-worksheets-or-report-templates-with-r-markdown" class="section level1">
+<h1>PART 3: Including “worksheets” or report templates with R Markdown</h1>
+<div id="why-do-this-1" class="section level2">
+<h2>Why do this?</h2>
+<p>An .Rmd template is essentially the replacement for a worksheet. It is a partially-filled out R Markdown file that you can create. You can create a template for every homework assignment or exercise that you want your students to work through. And they can access all of these templates easily when they go to <code>File</code> &gt; <code>New File</code> &gt; <code>R Markdown</code>. And then select <code>From Template</code> from the dialogue box menu. Your custom R Markdown template will appear there.</p>
+<p>You can make a couple templates for general use cases (e.g. “Homework”, “Reports”, “Final Project”) or you can make as many very specific templates populated with questions or tailored excercies (e.g. “Lesson 1 Excerices”, “Problem Set 2”).</p>
+<p>As a rough outline, to make your first template you will:</p>
+<ol style="list-style-type: decimal">
+<li>Use a usethis function <code>use_rmarkdown_template()</code> to create the necessary directory and file structure within your package.</li>
+<li>Modify the template.</li>
+<li>Save, Build, Install, and Restart.</li>
+</ol>
+<p>[DESCRIBING THE SPECIFICS OF RMARKDOWN BASICS IS OUTSIDE OF THE SCOPE OF THIS TUTORIAL. NEED TO LINK TO GOOD BASIC RESOURCE FOR THIS]</p>
+<p><br></p>
+<div id="step-1-create-files-and-folders" class="section level3">
+<h3>Step 1: Create files and folders</h3>
+<p>I assume you have already created the basic package infrastructure from Part 1.</p>
+<ul>
+<li>Run <code>use_rmarkdown_template(template_name = &quot;&lt;your-template-name&quot;)</code></li>
+</ul>
+<pre class="r"><code>use_rmarkdown_template(template_name = &quot;Worksheet1&quot;)
+
+✔ Setting active project to &#39;/Users/desiree/Documents/New R Projects/testpackage&#39;
+✔ Creating &#39;inst/rmarkdown/templates/worksheet1/skeleton/&#39;
+✔ Writing &#39;inst/rmarkdown/templates/worksheet1/template.yaml&#39;
+✔ Writing &#39;inst/rmarkdown/templates/worksheet1/skeleton/skeleton.Rmd&#39;
+&gt; </code></pre>
+<p>This creates a new folder in the root package directory <code>inst/</code> with several subdirectories.</p>
+<p><a href="skeletonss.png" width="500px"></a></p>
+<p><br></p>
+</div>
+<div id="step-2-create-your-template" class="section level3">
+<h3>Step 2: Create your template</h3>
+<ul>
+<li>Edit <code>skeleton.Rmd</code> inside <code>inst/rmarkdown/templates/&lt;your-template-name&gt;/skeleton/</code>. This is what you’re users will see. consider what you’d like the <a href="https://bookdown.org/yihui/rmarkdown/output-formats.html">output format to be</a>.
+<ul>
+<li>To see some examples of how <a href="https://github.com/dr-harper/example-rmd-templates">here</a>.</li>
+</ul></li>
+<li>You can also include a description of your template in the <code>template.yaml</code> file in the parent directory <code>skeleton/</code>. But this is not critical to getting the template into the package.</li>
+<li>Save, <code>Build</code> &gt; <code>Install and Restart</code></li>
+</ul>
+<center>
+<img src="template_example.png" width="500" />
+</center>
+<p><br></p>
+<p>You can get ideas for how minimal <code>.Rmd</code> templates can be customized by checkout out a few example templates <a href="https://github.com/dr-harper/example-rmd-templates">here</a>.</p>
+<p><br></p>
+</div>
+<div id="step-3-confirm-that-your-template-is-accessible" class="section level3">
+<h3>Step 3: Confirm that your template is accessible</h3>
+<ul>
+<li>Once your R session has been restarted, navigate to <code>File</code> &gt; <code>New File</code> &gt; <code>R Markdown</code>. Select <code>From Template</code> from the dialogue box menu. Your custom R Markdown template will appear there. Voilà!</li>
+</ul>
+<center>
+<img src="dialogue_box.png" width="500" />
+</center>
+<p><br></p>
+<div class="alert alert-note">
+<blockquote>
+<p><strong>Tip</strong>: You can continue to add new .Rmd templates to your package throughout your course. When you do, ask students to update the package, and they will access to the new templates.</p>
+</blockquote>
+<p>[INSERT DAVID MEZA QUOTE]</p>
+</div>
+<p><br></p>
+<p>We next show you how you can introduce a special type of .Rmd document in your package: a LearnR tutorial.</p>
+<p><br></p>
+</div>
+</div>
+</div>
+<div id="part-4-including-a-learnr-tutorial" class="section level1">
+<h1>PART 4: Including a <a href="https://blog.rstudio.com/2017/07/11/introducing-learnr/">LearnR</a> tutorial</h1>
+<div id="why-do-this-2" class="section level2">
+<h2>Why do this?</h2>
+<p>LearnR tutorials are interactive R Markdown documents that allow you to incorporate code exercises as well as elements like videos and quizzes. There are many possibilities, and we point you to other <a href="https://rstudio.github.io/learnr/index.html">resources</a> to see various examples of these tutorials in action. The nice thing about this tool is that students can play around with code and preview various concepts outside of the RStudio IDE. One possible use case would be when you would like to introduce broader concepts in an interactive way before students begin focusing on the programming and coding aspects of the concepts within a regular .Rmd document.</p>
+<p><br></p>
+<div id="step-1-create-files-and-directories" class="section level3">
+<h3>Step 1: Create files and directories</h3>
+<p>As before, I assume you have at a minimum created the basic package structure from Part 1.</p>
+<ul>
+<li>Install the <code>learnr</code> package</li>
+<li>Run <code>use_tutorial(&quot;&lt;name-of-tutorial-file&gt;&quot;, &quot;&lt;title-you'd-like-the-user-to-see&gt;&quot;, open = interactive())</code></li>
+</ul>
+<pre class="r"><code>remotes::install_github(&quot;rstudio/learnr&quot;, force=TRUE)
+
+use_tutorial(&quot;Lesson1&quot;, &quot;My Title&quot;, open = interactive())</code></pre>
+<p><br></p>
+<p>This adds a <code>tutorial</code> folder to the <code>inst</code> directory.</p>
+<p><br></p>
+</div>
+<div id="step-2-customize-your-tutorial" class="section level3">
+<h3>Step 2: Customize your tutorial</h3>
+<ul>
+<li>The <code>.Rmd</code> file inside the <code>tutorial</code> folder is automatically opened. Edit it to customize your tutorial content.</li>
+<li>Save and close.</li>
+</ul>
+<center>
+<img src="tutorial_ss.png" />
+</center>
+<p><br></p>
+</div>
+<div id="step-3-add-an-additional-folder" class="section level3">
+<h3>Step 3: Add an additional folder</h3>
+<p>At the time of writing, there is one <strong>important</strong> subdirectory fix we need to make in order for our tutorial to run.</p>
+<ul>
+<li>Add a folder with the same name as your .Rmd tutorial file. Place it within the <code>tutorials</code> folder.</li>
+<li>Move the tutorial <code>.Rmd</code> file inside the new folder.</li>
+</ul>
+<center>
+<img src="folders.png" width="400" />
+</center>
+<p>For each tutorial that you make, you will need to repeat this step.</p>
+<p><br></p>
+</div>
+<div id="step-4-run-your-tutorial" class="section level3">
+<h3>Step 4: Run your tutorial</h3>
+<ul>
+<li>Using <code>usethis::run_tutorial(&quot;&lt;tutorial-name&gt;&quot;, &quot;&lt;package-name&gt;&quot;)</code>, you will be able to run the tutorial.</li>
+</ul>
+<pre class="r"><code>learnr::run_tutorial(&quot;Lesson1&quot;, &quot;firstclass&quot;)</code></pre>
+<p>Once your package has been installed by your students, they will also be able to run the tutorial using script above. You can include this information in the README for your package.</p>
+<p><br></p>
+</div>
+</div>
+</div>
+<div id="part-5-final-steps" class="section level1">
+<h1>PART 5: FINAL STEPS</h1>
+<div id="optionally-document-the-package-as-a-whole" class="section level3">
+<h3>(Optionally) Document the package as a whole</h3>
+<p>We created documentation for the data set, but not for the package overall. To do so:</p>
+<ul>
+<li>Run <code>usethis::use_package_doc()</code></li>
+<li>Edit the associated .R script that is generated in <code>R/</code> with roxygen-style comments
+<ul>
+<li>See <a href="https://r-pkgs.org/man.html">section 6.6 here</a> and <a href="https://stat545.com/packages05_foofactors-package-02.html#document-the-package-as-whole">here</a> for examples of what to include.</li>
+</ul></li>
+<li>Don’t forget to run <code>document()</code> to update the documentation</li>
+</ul>
+<pre class="r"><code>#install.packages(c(&quot;devtools&quot;, &quot;roxygen2&quot;))
+library(roxygen2)
+library(devtools)
+
+document()</code></pre>
+<ul>
+<li>Re-Build and install your package</li>
+<li>Check that package documentation works by typing <code>? &lt;package-name&gt;</code> substituting your own package name.</li>
+</ul>
+<p><br></p>
+</div>
+<div id="create-a-readme.rmd-file" class="section level3">
+<h3>Create a README.Rmd file</h3>
+<p>You can include additional information in a <code>README.Rmd</code> file for your package. At a minimum, you should include a line about how to install, using the guidelines from <strong>Part 1: Deliver</strong>.</p>
+<ul>
+<li>Run <code>use_readme_rmd()</code></li>
+</ul>
+<pre class="r"><code>&gt; use_readme_rmd()
+✔ Writing &#39;README.Rmd&#39;
+✔ Adding &#39;^README\\.Rmd$&#39; to &#39;.Rbuildignore&#39;
+● Modify &#39;README.Rmd&#39;
+✔ Writing &#39;.git/hooks/pre-commit&#39;</code></pre>
+<ul>
+<li>Edit to meet your needs.</li>
+<li>Click <code>Knit</code>, so that it updates the corresponding README.md file</li>
+<li>Commit and push.</li>
+</ul>
+<p><br></p>
+</div>
+</div>
+<div id="troubleshooting" class="section level1">
+<h1>Troubleshooting</h1>
+<p>If you run into rough patches, here are some common pitfalls that might be resulting in errors:</p>
+<ul>
+<li>Do you have most up-to-date version of your packages? Try installing the development version of the package from github. Here’s an example of what that looks like for the <code>usethis</code> package.</li>
+</ul>
+<pre class="r"><code># install.packages(&quot;devtools&quot;)
+devtools::install_github(&quot;r-lib/usethis&quot;)</code></pre>
+<ul>
+<li>Are you running the most current version of R and/or RStudio?</li>
+<li>Did you install R via homebrew? –&gt; Uninstall and install from CRAN!</li>
+</ul>
+<p><br></p>
+</div>
+<div id="miscellaneous-nice-to-know" class="section level1">
+<h1>Miscellaneous / Nice to Know</h1>
+<ul>
+<li>If you didn’t start with a github repository, then you should use <code>usethis::use_github()</code></li>
+<li>Licensing educational materials [ASK GREG]</li>
+</ul>
+<p><br></p>
+</div>
+<div id="other-community-resources-on-package-making" class="section level1">
+<h1>Other community resources on package-making:</h1>
+<p>You can find a diversity of additional helpful resources and tutorials on making R packages. We list a few below:</p>
+<ul>
+<li><a href="https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/">Hilary Parker on basic package functions</a>: bare-bones function making</li>
+<li><a href="https://r-mageddon.netlify.com/post/writing-an-r-package-from-scratch/">Writing an R package from scratch</a> : Follows up on Hilary’s, but incorporating usethis()</li>
+<li><a href="https://www.davekleinschmidt.com/r-packages/">Taking your data to go</a>: Straightforward, concise on data packages</li>
+<li><a href="https://kbroman.org/pkg_primer/">R Package Primer</a></li>
+</ul>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

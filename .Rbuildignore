@@ -7,4 +7,4 @@
 ^appveyor\.yml$
 ^codecov\.yml$
 ^data-raw$
-^inst/tutorials/Lesson1\.Rmd$
+^inst/tutorials/Lesson1-Lesson1\.Rmd$
