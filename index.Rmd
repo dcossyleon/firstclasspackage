@@ -508,6 +508,8 @@ At the time of writing, there is one additional folder that needs to be added, w
 * Move your tutorial `.Rmd` file and the `.html` for your tutorial into this new folder.
 * `Build` > `Install and Restart`
 
+<center>![](images/folders.png){width=300px}</center>
+
 <br>
 
 ### Step 4: Run your tutorial
