@@ -13,14 +13,14 @@ body {
 h1 {
   padding-top: 3em !important;
   margin-top: -1em !important;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Lato', sans-serif;
   text-transform: uppercase;
   font-weight: bold;
   padding-bottom: 1em;
 }
 
 h2 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Lato', sans-serif;
   text-transform: uppercase;
   font-weight: bold;
   padding-top: 1.5em;
@@ -28,7 +28,7 @@ h2 {
 }
 
 h3 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Lato', sans-serif;
   text-transform: uppercase;
   font-weight: bold;
   color: #246e90;
