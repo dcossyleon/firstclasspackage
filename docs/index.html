@@ -459,11 +459,14 @@ div.tocify {
 </div>
 <div id="part-1-creating-bare-bones-package-structure" class="section level1">
 <h1>PART 1: Creating bare bones package structure</h1>
+<center>
+<img src="images/barebones.jpg" width="350" />
+</center>
 <p>Here we will make a bare bones package that is educator-ready. The final goal will be to create a package that is “downloadable” by your students which means this package needs to have a GitHub repository so that it can be easily shared.</p>
 <p><br></p>
 <div id="step-1-make-a-github-repo-for-the-package" class="section level3">
 <h3>Step 1: Make a GitHub repo for the package</h3>
-<p>If you’re still a beginner when it comes to integrating RStudio and Git, then the clearest way to begin making our package is by creating a GitHub repository for our package-to-be and then creating our project in RStudio afterwards. Follow the instructions in the <a href="https://happygitwithr.com/new-github-first.html">“New project, GitHub first” chapter of Happy Git with R</a> to link your new repo with RStudio, and keep in mind the following as you do so:</p>
+<p>If you’re a beginner when it comes to integrating RStudio and Git, then the clearest way to begin making our package is by creating a GitHub repository for our package-to-be and then creating our project in RStudio afterwards. Follow the instructions in the <a href="https://happygitwithr.com/new-github-first.html">“New project, GitHub first” chapter of Happy Git with R</a> to link your new repo with RStudio, and keep in mind the following as you do so:</p>
 <br>
 <div class="alert alert-note">
 <blockquote>
@@ -524,6 +527,9 @@ library(usethis)</code></pre>
 </div>
 <div id="step-4-build" class="section level3">
 <h3>Step 4: Build!</h3>
+<center>
+<img src="images/Build.jpg" width="400" />
+</center>
 <p>[SHOULD WE IGNORE THE CHECK STEP FOR NOW?]</p>
 <p>[IS LOADING DEVTOOLS ACTUALLY NECESSARY FOR THIS NEXT STEP?]</p>
 <p>The minimum package structure is in place, and now we go to <code>Build</code> &gt; <code>Install and Restart</code> to make the package “official”. And you’re done!…well, kind of. Your package doesn’t have anything useful in it (yet), but it does exist.</p>
@@ -548,7 +554,6 @@ remotes::install_github(&quot;rstudio4edu/testpackage&quot;)</code></pre>
 <h2>Why do this?</h2>
 <p>What if you’d like your students to work with a specific data set? Should you email them an excel or .csv file or upload it onto an oustide learning platform? No! You can include data sets in your package, ready to be summoned with the call of an object name. This saves precious instruction time that might otherwise be wasted and also helps students get to the fun stuff (analysis!) faster.</p>
 <p><br></p>
-<p>[IMAGE OVERVIEW: messy data in data-raw/ w/ scripts –&gt; cleaned up. callable version in data/ –&gt; Documenting: name of package in R/ –&gt; Documenting –&gt; ]</p>
 <p><br></p>
 <div id="step-1-add-raw-data-file" class="section level3">
 <h3>Step 1: Add raw data file</h3>
@@ -693,7 +698,7 @@ library(roxygen2)
 library(devtools)
 
 document()</code></pre>
-<p>This generates a .Rd file, that makes our documentation accessible to the package. [PHRASING?] This file lives inside a newly-generated <code>man/</code> folder.</p>
+<p>This generates a <code>.Rd</code> file, that makes our documentation accessible to the package. [PHRASING?] This file lives inside a newly-generated <code>man/</code> folder.</p>
 <p><br></p>
 <center>
 <img src="images/manfolder.png" width="500" />
@@ -713,8 +718,11 @@ document()</code></pre>
 <div id="step-4-build-and-install" class="section level3">
 <h3>Step 4: Build and install</h3>
 <ul>
-<li>As before, click on <code>Install and Build</code> under the Build tab.</li>
+<li>As before, click on <code>Install and Restart</code> under the Build tab.</li>
 </ul>
+<p>Here’s a review of all the data package steps so far:</p>
+<p><img src="images/datapackagemap.jpg" /></p>
+<p><br></p>
 <p>Congratulations, your package now includes a documented data set! It can be downloaded and installed as recommeded in <strong>Step 5: Deliver</strong> of <strong>Part 1</strong>.</p>
 <p>If you’d like to create a worksheet-like component for your package, continue with <strong>Part 3</strong>. Otherwise, skip to <strong>Final Steps</strong> for some recommendations on a couple final (and optional) package components.</p>
 <p><br></p>
@@ -794,7 +802,7 @@ document()</code></pre>
 <h1>PART 4: Including a <a href="https://blog.rstudio.com/2017/07/11/introducing-learnr/">LearnR</a> tutorial</h1>
 <div id="why-do-this-2" class="section level2">
 <h2>Why do this?</h2>
-<p>LearnR tutorials are interactive R Markdown documents that allow you to incorporate code exercises as well as elements like videos and quizzes. There are many possibilities, and we point you to other <a href="https://rstudio.github.io/learnr/index.html">resources</a> to see various examples of these tutorials in action. The nice thing about this tool is that students can play around with code and preview various concepts outside of the RStudio IDE. One possible use case would be when you would like to introduce broader concepts in an interactive way before students begin focusing on the programming and coding aspects of the concepts within a regular .Rmd document.</p>
+<p>LearnR tutorials are interactive R Markdown documents that allow you to incorporate code exercises as well as elements like videos and quizzes. There are many possibilities, and we point you to other <a href="https://rstudio.github.io/learnr/index.html">resources</a> to see various examples of these tutorials in action. The nice thing about this tool is that students can play around with code and preview various concepts outside of the RStudio IDE. One possible use case would be when you would like to introduce broader concepts in an interactive way before students begin focusing on the programming and coding aspects of the concepts within a regular <code>.Rmd</code> document.</p>
 <p><br></p>
 <div id="step-1-create-files-and-directories" class="section level3">
 <h3>Step 1: Create files and directories</h3>
@@ -819,9 +827,9 @@ use_tutorial(&quot;Lesson1&quot;, &quot;My Title&quot;, open = interactive())</c
 <img src="images/tutorial_ss.png" />
 </center>
 <ul>
-<li>Click <code>Run Document</code> next to the little green arrow in the toolbar of the .Rmd file.
+<li>Click <code>Run Document</code> next to the little green arrow in the toolbar of the <code>.Rmd</code> file.
 <ul>
-<li>This will generate a <code>.html</code> file in the same directory as the tutorial .Rmd file and also run your tutorial locally.</li>
+<li>This will generate a <code>.html</code> file in the same directory as the tutorial <code>.Rmd</code> file and also run your tutorial locally.</li>
 </ul></li>
 </ul>
 <p><br></p>
@@ -831,19 +839,22 @@ use_tutorial(&quot;Lesson1&quot;, &quot;My Title&quot;, open = interactive())</c
 <p>At the time of writing, there is one additional folder that needs to be added, which <code>use_tutorial</code> did not create for us.</p>
 <ul>
 <li>Within the subdirectory <code>tutorials/</code>, add a new folder with the same name as your <code>.Rmd</code> tutorial file.</li>
-<li>Move your tutorial .Rmd file and the .html for your tutorial into this new folder.</li>
+<li>Move your tutorial <code>.Rmd</code> file and the <code>.html</code> for your tutorial into this new folder.</li>
 <li><code>Build</code> &gt; <code>Install and Restart</code></li>
 </ul>
+<center>
+<img src="images/folders.png" width="300" />
+</center>
 <p><br></p>
 </div>
 <div id="step-4-run-your-tutorial" class="section level3">
 <h3>Step 4: Run your tutorial</h3>
 <ul>
-<li>Run your tutorial with the <code>run_tutorial(&quot;&lt;tutorial-name&gt;&quot;, &quot;&lt;package-name&gt;&quot;)</code>.</li>
+<li>Run your tutorial with <code>run_tutorial(&quot;&lt;tutorial-name&gt;&quot;, &quot;&lt;package-name&gt;&quot;)</code>.</li>
 </ul>
 <pre class="r"><code>learnr::run_tutorial(&quot;Lesson1&quot;, &quot;testpackage&quot;)</code></pre>
 <p>The above line of code is also how your users will be able to run your tutorial once they have installed your package.</p>
-<p>If you get errors, double check that your structure for the tutorial folders and files matches that of the <code>testpackage</code> directory. Make sure you Build, Install, and Restart before trying again.</p>
+<p>If you get errors, double check that your structure for the tutorial folders and files matches that of those in the <code>testpackage</code> <a href="https://github.com/rstudio4edu/testpackage">repository</a>. Make sure you Build, Install, and Restart before trying again.</p>
 <p><br></p>
 <p><br></p>
 </div>

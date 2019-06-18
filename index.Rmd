@@ -43,13 +43,15 @@ As an educator you can use a package to easily deliver the contents of your less
 
 # PART 1: Creating bare bones package structure
 
+<center>![](images/barebones.jpg){width=350px}</center>
+
 Here we will make a bare bones package that is educator-ready. The final goal will be to create a package that is "downloadable" by your students which means this package needs to have a GitHub repository so that it can be easily shared.
 
 <br>
 
 ### Step 1: Make a GitHub repo for the package
 
-If you're still a beginner when it comes to integrating RStudio and Git, then the clearest way to begin making our package is by creating a GitHub repository for our package-to-be and then creating our project in RStudio afterwards. Follow the instructions in the ["New project, GitHub first" chapter of Happy Git with R](https://happygitwithr.com/new-github-first.html) to link your new repo with RStudio, and keep in mind the following as you do so:
+If you're a beginner when it comes to integrating RStudio and Git, then the clearest way to begin making our package is by creating a GitHub repository for our package-to-be and then creating our project in RStudio afterwards. Follow the instructions in the ["New project, GitHub first" chapter of Happy Git with R](https://happygitwithr.com/new-github-first.html) to link your new repo with RStudio, and keep in mind the following as you do so:
 
 <br>
 <div class= "alert alert-note">
@@ -131,6 +133,8 @@ You can also edit the `DESCRIPTION` file to fill in the author (your) info and o
 
 ### Step 4: Build!
 
+<center>![](images/Build.jpg){width=400px}</center>
+
 [SHOULD WE IGNORE THE CHECK STEP FOR NOW?]
 
 [IS LOADING DEVTOOLS ACTUALLY NECESSARY FOR THIS NEXT STEP?]
@@ -166,8 +170,6 @@ Assuming you have followed the previous steps for building the basic structure o
 What if you'd like your students to work with a specific data set? Should you email them an excel or .csv file or upload it onto an oustide learning platform? No! You can include data sets in your package, ready to be summoned with the call of an object name. This saves precious instruction time that might otherwise be wasted and also helps students get to the fun stuff (analysis!) faster.
 
 <br>
-
-[IMAGE OVERVIEW: messy data in data-raw/ w/ scripts --> cleaned up. callable version in data/ --> Documenting: name of package in R/ --> Documenting --> ]
 
 <br>
 
@@ -343,7 +345,7 @@ library(devtools)
 document()
 ```
 
-This generates a .Rd file, that makes our documentation accessible to the package. [PHRASING?] This file lives inside a newly-generated `man/` folder.
+This generates a `.Rd` file, that makes our documentation accessible to the package. [PHRASING?] This file lives inside a newly-generated `man/` folder.
 
 <br>
 
@@ -366,8 +368,13 @@ Now we can check that our documentation works:
 
 ### Step 4:  Build and install
 
-* As before, click on `Install and Build` under the Build tab.
+* As before, click on `Install and Restart` under the Build tab.
 
+Here's a review of all the data package steps so far:
+
+![](images/datapackagemap.jpg)
+
+<br>
 
 Congratulations, your package now includes a documented data set! It can be downloaded and installed as recommeded in **Step 5: Deliver** of **Part 1**. 
 
